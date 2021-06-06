@@ -1,0 +1,11 @@
+/* red colour #D72D2D */
+/* Boostrap green -> #28a745 */
+$themered: rgb(170, 48, 48);
+
+.myredbtn{
+    color: white;
+    border-style: none;
+    background-color: $themered;
+    padding: 2%;
+    border-radius: 0.4rem;
+}

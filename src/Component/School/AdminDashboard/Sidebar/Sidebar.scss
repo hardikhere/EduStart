@@ -1,0 +1,141 @@
+@import "../../../../mediaQueries.scss";
+.mysidebar {
+  position: fixed;
+  height: 100vh;
+  z-index: 10000;
+  width: 19%;
+  margin-right: 0;
+  transition: width 0.3s linear;
+  text-align: center;
+  bottom: 0;
+  top: 0;
+  // @include responsive(desktop) {
+  //   position: absolute;
+  // }
+  & > a {
+    text-decoration: none !important;
+  }
+}
+
+.hideit {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  & > * {
+    transition: transform 0.7s ease-in-out;
+    transform: scale(0.7);
+  }
+}
+
+.showit {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(0%);
+  & > * {
+    transition: transform 0.7s ease-in-out;
+    transform: scale(1);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 1;
+    font-size: inherit;
+  }
+  to {
+    opacity: 0.6;
+    font-size: 0px !important;
+  }
+}
+
+.main-content {
+  width: 81%;
+  position: absolute;
+  transition: width 0.5s ease;
+  right: 0;
+  // @include responsive(phone) {
+  //   width: 100% !important;
+  // }
+}
+.fake-back {
+  height: 100vh;
+  width: 19%;
+  transition: width 0.5s ease-in-out;
+}
+
+.nav {
+  &-brand-area {
+    height: 20%;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: x-large;
+    cursor: pointer;
+  }
+}
+
+.sidebar {
+  &-item {
+    & > a {
+      text-decoration: none !important;
+    }
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0rem;
+    padding: 2%;
+    transition: 0.35s ease-in-out;
+    animation-name: slideRight;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    color: rgb(189, 189, 189) !important;
+    &:hover,
+    &:active,
+    &-active {
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      border-left: solid rgba($color: #4fe2f5, $alpha: 1);
+      color: rgb(238, 238, 238) !important;
+      font-weight: bolder;
+      .sidebar-icon {
+        color: rgb(189, 189, 189);
+      }
+    }
+    margin-top: 1%;
+    &-name {
+      width: 70%;
+      display: flex;
+      justify-content: flex-start !important;
+      color: rgb(189, 189, 189) !important;
+      &:hover {
+        color: rgb(238, 238, 238) !important;
+      }
+    }
+    &-icon {
+      width: 30%;
+      color: rgb(189, 189, 189);
+      &:hover {
+        color: rgb(238, 238, 238);
+      }
+      display: flex;
+      justify-content: center;
+    }
+  }
+  &-nav {
+    position: relative;
+    overflow-y: hidden;
+  }
+  &-footer {
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    padding: 5px;
+    width: 100%;
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    margin-bottom: 0%;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    margin-left: -4rem;
+  }
+  to {
+    margin-left: 0;
+  }
+}

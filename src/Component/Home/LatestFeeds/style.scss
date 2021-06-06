@@ -1,0 +1,67 @@
+@import "../../../mediaQueries.scss";
+$themered: rgb(170, 48, 48);
+
+.text-red {
+  color: $themered;
+}
+.feedsarea {
+  margin: 2%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feedscard {
+  transition: all 0.7s ease;
+  border-top: solid $themered;
+  border-width: 2px;
+  &:hover {
+    box-shadow: 0px 10px 6px 0 rgba(128, 128, 128, 0.808);
+  }
+  background-color: white;
+  box-shadow: 0px 8px 4px 0 rgba(255, 255, 255, 0.808);
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: rgba(255, 230, 230, 0.808);
+  width: 22%;
+  height: 20rem;
+  margin: 1%;
+  @include responsive(phone) {
+    width: 100%;
+    margin: 2%;
+  }
+
+  @include responsive(tab) {
+    width: 100%;
+    margin: 2%;
+  }
+
+  & > img {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    height: auto;
+  }
+}
+
+.feed {
+  &-title {
+    color: $themered;
+  }
+}
+
+.imgcontainer {
+  overflow: hidden;
+  background-size: cover;
+}
+
+.morefeedsbtn {
+  background-color: $themered;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.7s ease;
+  &:hover {
+    box-shadow: 0px 8px 4px 0 rgba(199, 199, 199, 0.808);
+  }
+  border-radius: 1rem;
+  color: white;
+}

@@ -1,0 +1,44 @@
+.previous-wrapper {
+  animation-name: fade;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+}
+
+.p-btn {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  margin: 0.4rem;
+  margin-top: 0;
+  padding: 0.2rem;
+  border-radius: 5px;
+  width: 2rem;
+  &:disabled {
+    background-color: rgb(168, 168, 168);
+  }
+}
+ .blurry-text {
+  -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+  color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#New{
+  font-weight: bold;
+  color: rgba(231, 33, 33, 0.993);
+}
+
+#Locked{
+  font-weight: bold;
+  color: rgba(82, 82, 82, 0.993);
+}
+
+#Readed{
+  font-weight: bold;
+  color: rgba(32, 209, 180, 0.993);
+}
+
+#Contacted{
+  font-weight: bold;
+  color: rgba(3, 190, 65, 0.993);
+}

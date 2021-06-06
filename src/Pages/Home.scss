@@ -1,0 +1,18 @@
+@import "./../mediaQueries.scss";
+
+.h-bg {
+  height: 90%;
+  position: absolute;
+  right: 0;
+  top: 80px;
+  width: 100%;
+  @include responsive(phone) {
+    display: none;
+  }
+}
+.mobile {
+  display: none;
+  @include responsive(phone) {
+    display: block;
+  }
+}

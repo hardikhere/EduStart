@@ -1,0 +1,40 @@
+@import "../../../mediaQueries.scss";
+
+.Nav_Container {
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 80px;
+  width: 100%;
+}
+.fake-nav {
+  height: 80px;
+  width: 100%;
+}
+.text-decor {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.dark {
+  color: initial !important;
+}
+
+.logo {
+  font-size: large;
+  font-weight: 700;
+}
+
+.my-nav {
+  align-items: flex-start;
+}
+
+@include responsive(desktop) {
+  .my-nav {
+    align-items: center;
+  }
+}

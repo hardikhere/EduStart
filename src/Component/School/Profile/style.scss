@@ -1,0 +1,8 @@
+$themered: rgb(170, 48, 48);
+.redbtn {
+  background-color: $themered;
+  color: white;
+  &:hover {
+    background-color: rgb(126, 33, 33) !important;
+  }
+}

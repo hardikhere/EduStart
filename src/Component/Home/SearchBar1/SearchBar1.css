@@ -1,0 +1,42 @@
+.bar {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 80vw;
+  padding: 1.5em;
+  margin: 1em;
+  border-radius: 20px;
+  background-color: white;
+  backdrop-filter: brightness(1);
+}
+
+@media (min-width: 576px) {
+  .bar {
+    background-color: rgba(255, 255, 255, 0.76);
+    backdrop-filter: brightness(0.8) blur(2px);
+  }
+}
+
+.field {
+  width: 100%;
+  margin: 0.5em 1em;
+  display: flex;
+  flex-flow: column;
+  justify-content: right;
+}
+
+.title {
+  font-size: large;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.search {
+  width: 92%;
+  margin: 0.5em 1em;
+  padding: 0.6em;
+  color: white;
+  background-color: #121212;
+  border-radius: 20px;
+  border: none;
+}

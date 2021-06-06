@@ -1,0 +1,48 @@
+.sP-cover {
+  margin-top: -5em;
+  height: 40vh;
+  background-size: cover;
+  filter: brightness(0.8);
+}
+
+.sP-logo {
+  height: 12em;
+  width: 12em;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-color: white;
+  background-position: center;
+  margin-top: -5em;
+  position: relative;
+  border-radius: 50%;
+}
+
+.sP-infocard {
+  border-radius: 5px;
+  color: white;
+  background-image: linear-gradient(90deg, #0073baa6, #35047fa3);
+}
+
+.sP-head {
+  padding: 1em 0;
+}
+
+.r-bar {
+  width: max-content;
+  border-bottom: solid 4px #d62626;
+}
+
+$themered: rgb(170, 48, 48);
+$hoverred: rgb(207, 66, 66);
+.redbtn {
+  background-color: $themered;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.7s ease;
+  &:hover {
+    box-shadow: 0px 8px 4px 0 rgba(199, 199, 199, 0.808);
+  }
+  border-radius: 1rem;
+  color: white;
+  width: max-content;
+}

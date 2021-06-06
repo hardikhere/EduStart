@@ -1,0 +1,194 @@
+@import "../../mediaQueries.scss";
+$themered: rgb(170, 48, 48);
+.filterbox {
+  background-color: white;
+  border-top: solid $themered;
+  padding: 0.8rem;
+  width: 100%;
+  height: auto;
+  &-heading {
+    color: $themered;
+  }
+  // border: solid rgb(204, 204, 204);
+  border-width: 0.8px;
+  border-radius: 0.8rem;
+  box-shadow: 0px 3px 6px 0px rgba($color: #999999, $alpha: 0.4);
+  &-item {
+    margin-top: 0.7rem;
+    border-top: solid rgb(175, 175, 175);
+    border-top-width: 1.3px;
+    width: 100%;
+    padding: 0.4rem;
+  }
+  &-btn {
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(190, 190, 190);
+    border-width: 0.6px;
+    border-radius: 1rem;
+    font-size: smaller;
+    display: flex;
+    justify-content: center;
+    width: max-content;
+    padding: 7px;
+    margin: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(255, 157, 157, 0.842);
+      border: solid $themered;
+      border-width: 0.6px;
+    }
+  }
+}
+
+.btn-selected {
+  background-color: rgba(255, 157, 157, 0.842);
+  border: solid $themered;
+  border-width: 0.6px;
+}
+
+.sr {
+  &-card {
+    transition: all 0.5s ease;
+    &-img {
+      transition: all 0.5s ease;
+      padding: 0px;
+      border-radius: 3rem;
+      animation-name: down;
+      animation-duration: 1s;
+    }
+    transform: scale(0.998);
+    &:hover {
+      transform: scale(1.02);
+      .sr-card-img {
+        transform: scale(1.13);
+        @include responsive(phone) {
+          transform: scale(1.07);
+        }
+        animation-name: up;
+        animation-duration: 0.7s;
+        margin-bottom: 20%;
+      }
+      .sr-card-details {
+        animation-name: slideRight;
+        animation-duration: 0.8s;
+        margin-left: 3%;
+      }
+    }
+    border-left: solid $themered;
+    border-width: 0.6px;
+    margin: 1em;
+    margin-bottom: 4%;
+    padding: 1%;
+    border-radius: 1em;
+    background-color: white;
+    &-img {
+      width: 30%;
+      height: 100%;
+    }
+    &-content {
+      width: 70%;
+    }
+    &-details {
+      width: 70%;
+      @include responsive(phone){
+        width: 100%;
+      }
+      font-size: smaller;
+      color: #4b4b4b;
+      &-itm {
+        margin-top: 2.3%;
+      }
+    }
+    &-btns {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: column;
+      & > * {
+        margin-top: 3%;
+      }
+    }
+  }
+}
+
+.grey {
+  color: #6e6e6e;
+  text-align: left !important;
+}
+
+.srch {
+  background-color: black;
+  border-radius: 0.5rem;
+  width: 20%;
+  padding: 0.2rem;
+  margin-left: 0.3rem;
+  cursor: pointer;
+}
+
+.info-column {
+  text-align: left;
+}
+
+@include responsive(tab) {
+  .info-column {
+    text-align: center;
+  }
+  .filterbox {
+    margin-top: 4em;
+  }
+}
+
+.mark {
+  &-container {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: solid $themered;
+    color: $themered;
+    border-width: thin;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(255, 206, 206);
+    }
+  }
+}
+
+.shortlistcard {
+  position: absolute;
+  top: 2%;
+  right: 5%;
+}
+.sharebtncard {
+  position: absolute;
+  top: -20%;
+  right: 20%;
+}
+@keyframes up {
+  from {
+    margin-bottom: 0;
+  }
+  to {
+    margin-bottom: 20%;
+  }
+}
+
+@keyframes down {
+  from {
+    margin-bottom: 20%;
+  }
+  to {
+    margin-bottom: 0%;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: 3%;
+  }
+}

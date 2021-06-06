@@ -1,0 +1,57 @@
+@import "../../../mediaQueries.scss";
+$themered: rgb(170, 48, 48);
+
+.registerform {
+  padding: 1em 2em;
+  background-color: white;
+  margin:3%;
+  box-shadow: 0px 4px 2px 0px rgba($color: #464646, $alpha: 0.4);
+  border-radius: 1rem;
+  border-top: solid $themered;
+  border-top-width: 2px;
+}
+
+.form-container {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.img-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.img-item {
+  position: relative;
+  height: 4rem;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 0.5rem;
+}
+
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  color: red;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  height: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0.8rem;
+}
+
+.redbanner {
+  width: 100%;
+  background-color: $themered;
+  height: 10rem;
+  color: white;
+  margin-top: -3%;
+  padding-top: 3%;
+  @include responsive(phone) {
+    margin-top: -7%;
+  }
+}

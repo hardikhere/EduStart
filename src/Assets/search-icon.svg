@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="38" viewBox="0 0 37 38">
+  <g id="search-icon" transform="translate(0 0.42)">
+    <g id="search">
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="37" height="38" transform="translate(0 -0.42)" fill="#fff" opacity="0"/>
+      <path id="Path_41" data-name="Path 41" d="M30,27.832l-5.183-5.168a12.073,12.073,0,0,0,2.576-7.469A12.195,12.195,0,1,0,15.195,27.389a12.073,12.073,0,0,0,7.469-2.576L27.832,30A1.531,1.531,0,1,0,30,27.832ZM6.049,15.195a9.146,9.146,0,1,1,9.146,9.146,9.146,9.146,0,0,1-9.146-9.146Z" transform="translate(1.24 1.847)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
