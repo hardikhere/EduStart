@@ -52,7 +52,7 @@ const Signup = () => {
         <div className="login-box">
           <div className="p-col">
             <h1 classname="p-text-bold text-dark" style={{ textAlign: "left" }}>
-              FredMat
+              EduStart
             </h1>
             <Form className="signupForm">
               <Form.Group>

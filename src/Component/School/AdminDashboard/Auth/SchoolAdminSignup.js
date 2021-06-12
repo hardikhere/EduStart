@@ -53,7 +53,7 @@ const SchoolAdminSignup = () => {
 
                 <div className="login-box">
                     <div className='p-col'>
-                        <h1 classname="p-text-bold text-dark" style={{ textAlign: "left" }}>FredMat
+                        <h1 classname="p-text-bold text-dark" style={{ textAlign: "left" }}>EduStart
                  <h5> School Admin Signup</h5>
                         </h1>
                         <Form className="signupForm">

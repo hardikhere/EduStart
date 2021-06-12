@@ -44,7 +44,7 @@ const Login = () => {
         setshouldRedirect(true);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err);
         setserverErr(err.response.data.message);
         setloading(false);
       });
@@ -57,7 +57,7 @@ const Login = () => {
         <div className="login-box">
           <div className="p-col">
             <h1 classname="p-text-bold text-dark" style={{ textAlign: "left" }}>
-              FredMat
+              EduStart
             </h1>
             <Form className="signupForm">
               <Form.Group>
@@ -115,7 +115,7 @@ const Login = () => {
               <i className="pi pi-times p-mr-2" style={{ color: "white" }}></i>
             </Link> */}
               <div className="sub-text">
-                <h6>New to FredMat?</h6>
+                <h6>New to Edustart?</h6>
                 <Link to="/signup">
                   <h5>Create Account</h5>
                 </Link>

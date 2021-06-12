@@ -92,21 +92,7 @@ const SchoolProfile = () => {
             <ContactUsForm />
             <ReviewForm />
           </div>
-          {/* <div className="p-d-flex p-flex-row w-100 p-jc-around sP-infocard p-ai-center p-shadow-14 p-my-4">
-            <div className="p-d-flex p-flex-column p-ai-center p-pt-3">
-              <h6>
-                <i className="pi pi-heart p-mr-2"></i>3.9
-              </h6>
-              <p>Parents Ratings</p>
-            </div>
-
-            <div className="p-d-flex p-flex-column p-ai-center  p-pt-3">
-              <h6>
-                <i className="pi pi-heart p-mr-2"></i>4.2
-              </h6>
-              <p>FredMat Score</p>
-            </div>
-          </div> */}
+       
 
           <div className="p-d-flex p-flex-row w-100 p-jc-around p-flex-row sP-infocard p-ai-center p-shadow-14 p-my-4">
             <div className="p-d-flex p-flex-column p-ai-center  p-pt-3">

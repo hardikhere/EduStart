@@ -12,11 +12,11 @@ function Navbar(props) {
       <h2 className="p-text-bold">
         {props.theme == "dark" ? (
           <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
-            FredMat
+            EduStart
           </Link>
         ) : (
           <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-            FredMat
+            EduStart
           </Link>
         )}
       </h2>
