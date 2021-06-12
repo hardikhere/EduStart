@@ -48,7 +48,7 @@ const NavbarB = ({
       className={classes}
     >
       <Navbar.Brand href="/">
-        <h1 classname="p-text-bold text-dark">EduStart</h1>
+        <h1 classname="p-text-bold text-dark brand">EduStart</h1>
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

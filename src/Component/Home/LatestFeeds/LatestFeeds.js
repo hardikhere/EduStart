@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { Link, useHistory } from 'react-router-dom';
 import axiosInstance from '../../../utils/axiosInstance';
@@ -55,11 +56,11 @@ const LatestFeeds = () => {
         <div style={{ width: "100%", padding: "2%", marginTop: "3%" }}>
             <div className="flex" style={{ justifyContent: "space-between" }}>
                 <h2>Latest Feeds </h2>
-                <div className="morefeedsbtn" onClick={() => {
+                <Button className="btn btn-primary" onClick={() => {
                     history.push("/feeds")
                 }}>
                     View More Feeds
-                </div>
+                </Button>
             </div>
             <div className="flex flex-wrap feedsarea">
 

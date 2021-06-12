@@ -1,5 +1,5 @@
 @import "../../mediaQueries.scss";
-$themered: rgb(170, 48, 48);
+$themered: rgb(33, 165, 189);
 .filterbox {
   background-color: white;
   border-top: solid $themered;
@@ -33,7 +33,7 @@ $themered: rgb(170, 48, 48);
     margin: 5px;
     cursor: pointer;
     &:hover {
-      background-color: rgba(255, 157, 157, 0.842);
+      background-color: rgba(157, 255, 234, 0.842);
       border: solid $themered;
       border-width: 0.6px;
     }
@@ -41,7 +41,7 @@ $themered: rgb(170, 48, 48);
 }
 
 .btn-selected {
-  background-color: rgba(255, 157, 157, 0.842);
+  background-color: rgba(157, 255, 234, 0.842);
   border: solid $themered;
   border-width: 0.6px;
 }
@@ -151,7 +151,7 @@ $themered: rgb(170, 48, 48);
     border-width: thin;
     cursor: pointer;
     &:hover {
-      background-color: rgb(255, 206, 206);
+      background-color: rgba(157, 255, 234, 0.842);
     }
   }
 }

@@ -5,16 +5,16 @@ import Navbar from "../Component/Home/Navbar/NavbarB";
 import SearchBar1 from "../Component/Home/SearchBar1/SearchBar1";
 import { Container, Jumbotron } from "react-bootstrap";
 import LatestFeeds from "../Component/Home/LatestFeeds/LatestFeeds";
-import RedBack from "../Assets/bg1.webp";
-import MobileBack from "../Assets/mobilebg.webp";
+import StudentsVector from "../Assets/students.png";
+
 const Home = () => {
   return (
-    <div className=" p-d-flex p-flex-column" >
+    <div className=" p-d-flex p-flex-column">
       <Navbar bg="white" variant="light" classes="p-shadow-8" />
-      <div className="p-d-flex p-flex-wrap p-ai-center " >
-        <img src={RedBack} alt="" className="h-bg" draggable={false} />
-        <img src={MobileBack} alt=""  className="h-bg mobile" draggable={false} />
-        <div className="p-col-12 p-md-7 p-px-6">
+      <div className="p-d-flex p-flex-wrap p-ai-center right_home ">
+        {/* <img src={RedBack} alt="" className="h-bg" draggable={false} /> */}
+
+        <div className="p-col-12 p-md-7 p-sm-0 p-px-6">
           <Fade left>
             <Jumbotron
               fluid
@@ -24,7 +24,13 @@ const Home = () => {
                 marginBottom: "0em",
               }}
             >
-              <Container>
+              <img
+                src={StudentsVector}
+                alt=""
+                className="students_vector"
+                draggable={false}
+              />
+              <Container className="home_text shadow-md shadow p-3 mb-5 posision-absolute">
                 <h1
                   style={{ fontSize: "5vh" }}
                   className="my-4 text-center text-lg-left"
@@ -43,14 +49,13 @@ const Home = () => {
             </Jumbotron>
           </Fade>
         </div>
-        <div className="p-col-12 p-md-5">
+        <div className="p-col-12 p-md-5 ">
           <Fade right>
             <SearchBar1 />
           </Fade>
         </div>
       </div>
       <LatestFeeds />
-
     </div>
   );
 };

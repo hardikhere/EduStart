@@ -16,3 +16,44 @@
     display: block;
   }
 }
+
+.home_text {
+  background-color: dodgerblue;
+  border-radius: 2rem;
+  padding: 1rem;
+  top: 16%;
+  left: 5%;
+  position: absolute;
+  @include responsive(phone) {
+    position: initial;
+  }
+  max-width: max-content;
+  z-index: -1;
+}
+
+.students_vector {
+  max-height: 28rem;
+  @include responsive(phone) {
+    width: 70vw;
+  }
+}
+
+.right_home {
+  background: rgb(0, 255, 184);
+  background: -moz-linear-gradient(
+    135deg,
+    rgba(0, 255, 184, 1) 0%,
+    rgba(0, 164, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    135deg,
+    rgba(0, 255, 184, 1) 0%,
+    rgba(0, 164, 255, 1) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(0, 255, 184, 1) 0%,
+    rgba(0, 164, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffb8",endColorstr="#00a4ff",GradientType=1);
+}
