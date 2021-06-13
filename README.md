@@ -1,10 +1,17 @@
 # EduStart 
-> Warning :- ⛔ I can not accept issues and PR this project is just for demostration of my freelance project, I do not own the business logic.
+> Warning :- This project is sold, I can not accept any PR or issues this is just readonly, Real name of project is changed , I do not own the business logic and this is incomplete with respect to business logic, still you will find a lot to learn, this repo can be deleted in a while so do not fork it
+
 ### Taking Education to the moon
 #### Home Page
 ![Home Page Image](https://i.ibb.co/nLbnpNN/Screenshot-from-2021-06-12-17-54-49.png)
 #### Search Page
 ![enter image description here](https://i.ibb.co/sjgsVT9/Screenshot-from-2021-06-13-15-41-04.png)
+
+I will public backend soon
+libraries used
+Reactjs :heart:
+Redux :blue_heart:
+SCSS :purple_heart:
 ## Local Setup 
 ```cmd
  npm install
