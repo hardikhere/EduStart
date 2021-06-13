@@ -54,8 +54,8 @@ const Login = () => {
       <Navbar bg="white" variant="light" classes="p-shadow-8" />
       <div className="login-screen d-flex p-jc-center p-ai-center">
         {shouldRedirect && <Redirect to="/" />}
-        <div className="login-box">
-          <div className="p-col">
+        <div className="login-box d-flex flex-wrap">
+          <div className="auth_left">
             <h1 classname="p-text-bold text-dark" style={{ textAlign: "left" }}>
               EduStart
             </h1>
@@ -100,7 +100,7 @@ const Login = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="text-center btn btn-danger"
+                  className="text-center btn btn-primary"
                   block
                 >
                   {loading ? "Loading.." : "Login"}
@@ -108,19 +108,14 @@ const Login = () => {
               </Form.Group>
             </Form>
           </div>
-          <div className="p-col">
-            <image src={ParentImg} />
-            <div className="p-d-flex p-flex-column p-jc-between h-100 p-ai-end">
-              {/* <Link to="/">
-              <i className="pi pi-times p-mr-2" style={{ color: "white" }}></i>
-            </Link> */}
-              <div className="sub-text">
-                <h6>New to Edustart?</h6>
-                <Link to="/signup">
-                  <h5>Create Account</h5>
-                </Link>
-              </div>
+          <div className="auth_right">
+            <div className="text-dark">
+              <h6>New to Edustart?</h6>
+              <Link to="/signup">
+                <h5>Create Account</h5>
+              </Link>
             </div>
+            <img src={ParentImg} className="auth_img" alt="" srcset="" />
           </div>
         </div>
       </div>

@@ -57,3 +57,45 @@
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ffb8",endColorstr="#00a4ff",GradientType=1);
 }
+
+.auth_right {
+  display: flex;
+  color: rgb(36, 36, 36) !important;
+  flex-direction: column;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  justify-content: space-between;
+  background-color: rgb(149, 202, 255);
+  @include responsive(desktop) {
+    height: max-content;
+    width: 40%;
+  }
+}
+.auth_img {
+  width: 14rem;
+  @include responsive(phone) {
+    display: none;
+  }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(7, 54, 102); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(53, 132, 211); 
+}

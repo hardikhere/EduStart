@@ -10,6 +10,7 @@ import axiosInstance from "../utils/axiosInstance";
 import { APIS } from "../utils/endpoints";
 import "./Signup.scss";
 import Navbar from "../Component/Home/Navbar/NavbarB";
+import ParentImg from "../Assets/parent.png";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -104,7 +105,7 @@ const Signup = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="text-center btn btn-danger"
+                  className="text-center btn btn-primary"
                   block
                 >
                   Submit
@@ -112,18 +113,14 @@ const Signup = () => {
               </Form.Group>
             </Form>
           </div>
-          <div className="p-col">
-            <div className="p-d-flex p-flex-column p-jc-between h-100 p-ai-end">
-              {/* <Link to="/">
-              <i className="pi pi-times p-mr-2" style={{ color: "white" }}></i>
-            </Link> */}
-              <div className="sub-text">
-                <h6>Already have account?</h6>
-                <Link to="/login">
-                  <h5>Login</h5>
-                </Link>
-              </div>
+          <div className="auth_right">
+            <div className="text-dark">
+              <h6>Already have account?</h6>
+              <Link to="/login">
+                <h5>Login</h5>
+              </Link>
             </div>
+            <img src={ParentImg} className="auth_img" alt="" srcset="" />
           </div>
         </div>
       </div>
