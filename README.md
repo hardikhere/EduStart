@@ -18,7 +18,6 @@ libraries used
 Reactjs :heart:
 Redux :blue_heart:
 SCSS :purple_heart:
-
 ## Local Setup 
 ```cmd
  npm install
