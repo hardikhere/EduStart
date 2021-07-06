@@ -30,7 +30,7 @@ const SchoolAdminLogin = () => {
     const handleSubmit = () => {
         console.log(emailErr, passwordErr)
         if (emailErr || passwordErr) {
-            setshowErrors(true);
+            setshowErrors(true);xcvxcv
             return;
         }
         setloading(true);

@@ -27,7 +27,8 @@ const Login = () => {
   const [loading, setloading] = useState(false);
   const [shouldRedirect, setshouldRedirect] = useState(false);
   const [serverErr, setserverErr] = useState(false);
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(emailErr, passwordErr);
     if (emailErr || passwordErr) {
       setshowErrors(true);
