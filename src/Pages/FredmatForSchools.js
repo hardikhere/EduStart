@@ -34,7 +34,7 @@ const FredmatForSchools = () => {
                   style={{ fontSize: "2.5vh" }}
                   className="my-2 text-center text-lg-left"
                 >
-                  Welcom to FredMat for Schools
+                  Welcome to EduStart for Schools
                 </p>
               </Container>
               <img src={SchoolVector} alt="" />

@@ -23,7 +23,7 @@ const FeedsPage = () => {
     };
     const LoadingCards = () => (
         <div className="feedscard">
-            <SkeletonTheme highlightColor="#f5f5f5" color="#fff">
+            <SkeletonTheme highlightColor="#E1E7FF" color="#fff">
                 <div className="p-3" style={{ height: "40%", overflow: "hidden" }}>
                     <h6 style={{ fontWeight: "bold", color: "grey" }}>
                         <Skeleton height="10px" />

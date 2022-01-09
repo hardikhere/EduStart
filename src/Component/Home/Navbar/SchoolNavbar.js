@@ -11,21 +11,6 @@ import React, { useState } from "react";
 const SchoolNavbar = ({ bg, variant, classes }) => {
   const [dropToggle, setDropToggle] = useState(false);
 
-  //   const AvatarMenu = () => {
-  //     return (
-  //       <div>
-  //         <Button
-  //           label="logout"
-  //           variant={variant === "dark" ? "light" : "dark"}
-  //           onClick={handleLogout}
-  //           className="p-button-rounded login"
-  //         >
-  //           logout
-  //         </Button>
-  //       </div>
-  //     );
-  //   };
-
   const handleLogout = () => {
     window.localStorage.removeItem("afmt");
     window.location.reload();
@@ -40,14 +25,14 @@ const SchoolNavbar = ({ bg, variant, classes }) => {
       className={classes}
     >
       <Navbar.Brand href="/">
-        <h1 classname="p-text-bold text-dark">FredMat</h1>
+        <h1 classname="p-text-bold text-dark">EduStart</h1>
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="text-dark mx-lg-auto my-nav p-align-center">
-          <Nav.Link href="/about">About Us</Nav.Link>
+        <Nav className="text-dark mx-lg-auto my-nav p-align-center mx-5">
+          <Link to="/about">About Us</Link>
         </Nav>
 
         <div>

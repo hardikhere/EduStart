@@ -30,22 +30,6 @@ const Home = () => {
                 className="students_vector"
                 draggable={false}
               />
-              <Container className="home_text shadow-md shadow p-3 mb-5 posision-absolute">
-                <h1
-                  style={{ fontSize: "5vh" }}
-                  className="my-4 text-center text-lg-left"
-                >
-                  Hey There!!
-                </h1>
-                <p
-                  style={{ fontSize: "2.5vh" }}
-                  className="my-2 text-center text-lg-left"
-                >
-                  Find the best school for your child, right at your fingertips.
-                  <br />
-                  Listing more than 16000+ Schools in your area.
-                </p>
-              </Container>
             </Jumbotron>
           </Fade>
         </div>

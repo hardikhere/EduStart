@@ -26,7 +26,7 @@ const LatestFeeds = () => {
 
     const LoadingCards = () => (
         <div className="feedscard">
-            <SkeletonTheme highlightColor="#FAAAAA" color="#FFCFCF">
+            <SkeletonTheme highlightColor="#E1E7FF" color="#fffff">
                 <div className="p-3" style={{ height: "40%", overflow: "hidden" }}>
                     <h6 style={{ fontWeight: "bold", color: "grey" }}>
                         <Skeleton height="10px" />

@@ -2,14 +2,27 @@
 /* Boostrap green -> #28a745 */
 $themered: rgb(48, 142, 170);
 
-.myredbtn{
-    color: white;
-    border-style: none;
-    background-color: $themered;
-    padding: 2%;
-    border-radius: 0.4rem;
+.myredbtn {
+  color: white;
+  border-style: none;
+  background-color: $themered;
+  padding: 2%;
+  border-radius: 0.4rem;
 }
 
-.brand{
-    background-color: rgb(107, 180, 253);
+.brand {
+  background-color: rgb(107, 180, 253);
+}
+
+a {
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none !important;
+  }
+
+  color: none !important;
+  text-decoration: none !important;
 }

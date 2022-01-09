@@ -1,5 +1,5 @@
 import "./Navbar.scss";
-import { Button, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import "primeflex/primeflex.css";
 import { Link } from "react-router-dom";
@@ -19,23 +19,8 @@ const NavbarB = ({
 }) => {
   const [dropToggle, setDropToggle] = useState(false);
 
-  const AvatarMenu = () => {
-    return (
-      <div>
-        <Button
-          label="logout"
-          variant={variant === "dark" ? "light" : "dark"}
-          onClick={handleLogout}
-          className="p-button-rounded login"
-        >
-          logout
-        </Button>
-      </div>
-    );
-  };
-
   const handleLogout = () => {
-    window.localStorage.removeItem("fmt")
+    window.localStorage.removeItem("fmt");
     window.location.reload();
   };
 
@@ -47,18 +32,18 @@ const NavbarB = ({
       expand="lg"
       className={classes}
     >
-      <Navbar.Brand href="/">
-        <h1 classname="p-text-bold text-dark brand">EduStart</h1>
+      <Navbar.Brand>
+        <Link to="/" className="p-text-bold text-dark text-lg">
+          EduStart
+        </Link>
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="text-dark mx-lg-auto my-nav p-align-center">
-          {!isSchool && (
-            <Nav.Link href="/fredmat-schools">For Schools</Nav.Link>
-          )}
-          <Nav.Link href="/about">About Us</Nav.Link>
+          {!isSchool && <Link to="/fredmat-schools">For Schools</Link>}
+          <Link to="/about" className="mx-3">About Us</Link>
           {showSearch ? (
             <NavItem className="my-2">
               <SearchByText />
@@ -107,13 +92,6 @@ const NavbarB = ({
                     }}
                   >
                     <FontAwesomeIcon icon={faUser} size="lg" />
-                    {/* <img
-                      src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                      width="40"
-                      height="40"
-                      className="rounded-circle"
-                      alt="avatar"
-                    /> */}
                   </div>
                   {dropToggle && (
                     <>
