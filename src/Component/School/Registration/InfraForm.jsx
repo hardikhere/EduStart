@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { _updateSchoolRegForm } from '../../../redux/schoolRegister/actions';
 import axiosInstance from '../../../utils/axiosInstance';
 import { APIS } from '../../../utils/endpoints';
+import Adder from './Adder';
 
 const baseStyle = {
     flex: 1,
@@ -45,53 +46,18 @@ const InfraForm = (props) => {
         dispatch(_updateSchoolRegForm(schoolRegister))
     }
 
-    const handleOnDrop = acceptedFiles => {
-        const numberOfFiles = acceptedFiles.length;
-        let uploaded = 0;
-        let imgurls = [];
-        setimageUploadLoading(true);
-        acceptedFiles.forEach(pic => {
-            const formData = new FormData();
-            formData.set("pic", pic);
-            axiosInstance.post(APIS._uploadImage, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                }
-            }).then(res => {
-                uploaded++;
-                console.log("uploaded ", res.data);
-                imgurls.push(res.data.data.url);
-                if (uploaded === numberOfFiles) {
-                    setimageUploadLoading(false);
-                    setUserResponse({
-                        ...UserResponse,
-                        imageUrls: UserResponse.imageUrls.concat(imgurls)
-                    })
-                    schoolRegister.imageUrls = UserResponse.imageUrls.concat(imgurls);
-                    dispatch(_updateSchoolRegForm(schoolRegister));
-                }
-            })
+    const handleOnDrop = url => {
+        setUserResponse({
+            ...UserResponse,
+            imageUrls: UserResponse.imageUrls.concat(url)
         })
+        schoolRegister.imageUrls = UserResponse.imageUrls.concat(url);
+        dispatch(_updateSchoolRegForm(schoolRegister));
     }
 
-    const handleOnLogoDrop = acceptedFiles => {
-        setlogoUploadLoading(true);
-        const formData = new FormData();
-        formData.set("pic", acceptedFiles[0]);
-        axiosInstance.post(APIS._uploadImage, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
-        }).then(res => {
-            console.log("uploaded ", res.data);
-            setUserResponse({
-                ...UserResponse,
-                logoUrl: res.data.data.url
-            })
-            setlogoUploadLoading(false);
-            schoolRegister.logoUrl = res.data.data.url
-            dispatch(_updateSchoolRegForm(schoolRegister));
-        })
+    const handleAddLogoUrl = ev => {
+        schoolRegister.logoUrl = ev.target.value;
+        dispatch(_updateSchoolRegForm(schoolRegister));
     }
 
     const removeUrl = (toRemove) => {
@@ -109,68 +75,21 @@ const InfraForm = (props) => {
     return (
         <Form>
             <Form.Group>
-                <Form.Label>Upload School Images</Form.Label>
-                <DropZone onDrop={handleOnDrop}>
-                    {({ getRootProps, getInputProps, isDragActive }) => (
-                        <section>
-                            <div {...getRootProps()}
-                                onMouseOver={(e) => { e.target.style.color = activeStyle }}
-                                onMouseOut={(e) => { e.target.style.color = "grey" }}
-                                style={{
-                                    ...baseStyle,
-                                    color: isDragActive ? activeStyle : "grey",
-                                    borderColor: isDragActive ? activeStyle : "grey",
-                                }}>
-                                <input {...getInputProps()} multiple disabled={imageUploadLoading} />
-                                {
-                                    imageUploadLoading ? <p>Please wait while we are uploading images</p>
-                                        : <p>Click here to upload images OR Drag & Drop files here</p>
-                                }
-                            </div>
-                        </section>
-                    )}
-                </DropZone>
-                <div className="img-container">
-                    {
-                        schoolRegister.imageUrls?.map(imgurl => {
-                            return <div className="img-item">
-                                <div className="cross" onClick={() => removeUrl(imgurl)}>&times;</div>
-                                <img src={imgurl} style={{ height: "inherit" }} alt="" />
-                            </div>
-                        })
+                <Form.Label>School Images</Form.Label>
+                <Adder array={UserResponse.imageUrls ?? []} appender={
+                    (item) => {
+                        handleOnDrop(item)
                     }
-                </div>
+                } deleter={
+                    (item) => {
+                        removeUrl(item);
+                    }
+                } />
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Upload School Logo</Form.Label>
-                <DropZone onDrop={handleOnLogoDrop}>
-                    {({ getRootProps, getInputProps, isDragActive }) => (
-                        <section>
-                            <div {...getRootProps()}
-                                onMouseOver={(e) => { e.target.style.color = activeStyle }}
-                                onMouseOut={(e) => { e.target.style.color = "grey" }}
-                                style={{
-                                    ...baseStyle,
-                                    color: isDragActive ? activeStyle : "grey",
-                                    borderColor: isDragActive ? activeStyle : "grey",
-                                }}>
-                                <input {...getInputProps()} multiple disabled={logoUploadLoading} />
-                                {
-                                    logoUploadLoading ? <p>Please wait while we are uploading image</p>
-                                        : <p>Click here to upload Logo OR Drag & Drop file here</p>
-                                }
-                            </div>
-                        </section>
-                    )}
-                </DropZone>
-                <div>
-                    {
-                        schoolRegister.logoUrl?.length > 0 && <img
-                            className="img-item"
-                            src={schoolRegister.logoUrl} alt="" />
-                    }
-                </div>
+                <Form.Label>School Logo</Form.Label>
+                <Form.Control onChange={handleAddLogoUrl} value={schoolRegister.logoUrl} />
             </Form.Group>
 
             <Form.Group>

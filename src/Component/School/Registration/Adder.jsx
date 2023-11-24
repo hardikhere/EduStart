@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from "react-bootstrap";
+
 const Adder = (props) => {
     const [Text, setText] = useState("");
     const handleChange = (e) => {
@@ -15,7 +16,6 @@ const Adder = (props) => {
     return (
         <div style={{ width: "100%" }}>
 
-
             <Row>
                 <Col md={8} lg={10}>
                     <Form.Control type="text" onChange={handleChange} />
@@ -23,7 +23,7 @@ const Adder = (props) => {
                 <Col md={4} lg={2} className="pl-0">
                     <Button onClick={handleAdd} style={{ marginLeft: "0" }}>
                         Add
-                        </Button>
+                    </Button>
                 </Col>
             </Row>
 

@@ -1,4 +1,4 @@
-const BASE = "https://edustart-backend.herokuapp.com/api/v1";
+const BASE = "https://edustart-backend.onrender.com/api/v1";
 //const BASE = "http://localhost:8080/api/v1"
 export const APIS = {
   _createSchool: BASE + "/create-school",

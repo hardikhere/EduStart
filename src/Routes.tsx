@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Registration from "./Component/School/Registration/index";
 import Home from "./Pages/Home";
@@ -9,7 +8,6 @@ import Signup from "./Pages/Signup";
 import AdminDashboard from "./Component/School/AdminDashboard/AdminDashboard";
 import Search from "./Component/SearchPage/Search";
 import AdminRoute from "./Component/Auth/AdminRoute";
-import PrivateRoute from "./Component/Auth/PrivateRoute";
 import { useEffect } from "react";
 import axiosInstance from "./utils/axiosInstance";
 import { APIS } from "./utils/endpoints";
@@ -39,32 +37,31 @@ function onError(positionError) {
     default:
       console.log("An unknown error occurred.");
   }
-};
+}
 
-const onProgress = (pro) => console.log(pro)
-
+const onProgress = (pro) => console.log(pro);
 
 const Routes = () => {
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.userDetails);
 
   const onSuccess = (position) => {
-    console.log("got position ", position)
+    console.log("got position ", position);
     userDetails.longitude = position.coords?.longitude;
     userDetails.latitude = position.coords?.latitude;
-    window.localStorage.setItem("longitude", position.coords?.longitude)
-    window.localStorage.setItem("latitude", position.coords?.latitude)
+    window.localStorage.setItem("longitude", position.coords?.longitude);
+    window.localStorage.setItem("latitude", position.coords?.latitude);
     dispatch(_updateUserInfo(userDetails));
   };
   useEffect(() => {
-    const longInLS = window.localStorage.getItem("longitude")
-    const latInLS = window.localStorage.getItem("latitude")
+    const longInLS = window.localStorage.getItem("longitude");
+    const latInLS = window.localStorage.getItem("latitude");
     if (!latInLS && !longInLS) {
-      getUserLongLat(onSuccess, onError, onProgress)
+      getUserLongLat(onSuccess, onError, onProgress);
     } else {
       userDetails.longitude = parseFloat(longInLS);
       userDetails.latitude = parseFloat(latInLS);
-      dispatch(_updateUserInfo(userDetails))
+      dispatch(_updateUserInfo(userDetails));
     }
   }, []);
 
