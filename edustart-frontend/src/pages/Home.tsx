@@ -1,45 +1,18 @@
 import React from "react";
-import "./Home.scss";
-import Fade from "react-reveal/Fade";
-import Navbar from "../Component/Home/Navbar/NavbarB";
-import SearchBar1 from "../Component/Home/SearchBar1/SearchBar1";
-import { Container, Jumbotron } from "react-bootstrap";
-import LatestFeeds from "../Component/Home/LatestFeeds/LatestFeeds";
-import StudentsVector from "../Assets/students.png";
+import Image from "next/image";
+import Logo from "@/app/assets/edustart-logo.png";
+import SearchByText from "@/app/Components/SearchPage/SearchByText";
 
 const Home = () => {
   return (
-    <div className=" p-d-flex p-flex-column">
-      <Navbar bg="white" variant="light" classes="p-shadow-8" />
-      <div className="p-d-flex p-flex-wrap p-ai-center right_home ">
-        {/* <img src={RedBack} alt="" className="h-bg" draggable={false} /> */}
-
-        <div className="p-col-12 p-md-7 p-sm-0 p-px-6">
-          <Fade left>
-            <Jumbotron
-              fluid
-              style={{
-                backgroundColor: "transparent",
-                color: "white",
-                marginBottom: "0em",
-              }}
-            >
-              <img
-                src={StudentsVector}
-                alt=""
-                className="students_vector"
-                draggable={false}
-              />
-            </Jumbotron>
-          </Fade>
+    <div className="">
+      <div className="bg-white rounded-bl-xl shadow-sm rounded-br-xl w-100 h-20 flex items-center pr-10 pl-10">
+        <div className="flex items-center">
+          <Image src={Logo} className="h-16 w-16" alt="edustart logo" />
+          <h1 className="pl-4 text-4xl text-sky-600">edustart</h1>
         </div>
-        <div className="p-col-12 p-md-5 ">
-          <Fade right>
-            <SearchBar1 />
-          </Fade>
-        </div>
+        <SearchByText />
       </div>
-      <LatestFeeds />
     </div>
   );
 };
