@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "v1",
     "@react-spring/parallax": "^9.7.3",
     "@react-spring/web": "^9.7.3",
     "axios": "^1.6.2",

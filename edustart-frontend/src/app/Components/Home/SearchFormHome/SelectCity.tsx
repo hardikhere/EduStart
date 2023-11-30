@@ -4,7 +4,10 @@ import locationIcon from "@/app/assets/location.svg";
 import { Modal } from "@/app/components/common";
 import Image from "next/image";
 
-const SelectCity = ({ onCitySelect }) => {
+const SelectCity: React.FC<{
+  onSelect: (city: string) => void;
+  city: string;
+}> = ({ onSelect, city = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -12,19 +15,20 @@ const SelectCity = ({ onCitySelect }) => {
         onClick={() => {
           setIsOpen(true);
         }}
-        className="bg-slate-200 relative  pl-6 pr-6 rounded-none text-slate-600 border"
+        className="bg-slate-200 relative  pl-6 pr-6 rounded-none
+        text-slate-600 border rounded-bl-md rounded-tl-md "
       >
         <Image src={locationIcon} alt="Location icon" />
-        <div>Location</div>
+        <div>{city.length === 0 ? "Location" : city}</div>
       </Button>
       {isOpen && (
         <Modal
-          containerClassName="p-6 max-w-60"
+          containerClassName="p-6"
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
         >
           <h2 className="mb-4">Select City</h2>
-          <div className="flex gap-4 wrap">
+          <div className="flex gap-4 flex-wrap">
             {allCities.map(({ name, image }) => {
               return (
                 <div
@@ -33,7 +37,7 @@ const SelectCity = ({ onCitySelect }) => {
                     h-20 w-40 rounded-md p-4 bg-slate-300
                     transition-all duration-300 hover:pt-8"
                   onClick={() => {
-                    onCitySelect(name);
+                    onSelect(name);
                     setIsOpen(false);
                   }}
                 >
