@@ -10,7 +10,7 @@ export default function Banner() {
       <Image src={Student1} />
       <Image src={Student2} />
       <Image src={Student3} />
-      <div className="absolute bottom-40 w-2/5">
+      <div className="absolute bottom-40">
         <SearchFormHome />
       </div>
     </div>

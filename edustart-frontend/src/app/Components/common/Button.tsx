@@ -3,9 +3,11 @@ import React, { HTMLAttributes } from "react";
 const Button: React.FC<HTMLAttributes<HTMLButtonElement>> = ({
   children,
   className,
+  ...rest
 }) => {
   return (
     <button
+      {...rest}
       className={`pl-2 pr-2 h-full max-h-20 rounded-md text-slate-100 
         flex justify-center items-center gap-1 ${className}`}
     >

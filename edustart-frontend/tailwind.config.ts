@@ -14,13 +14,13 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       keyframes: {
-        scaleup: {
-          "0%": { transform: "scale-90" },
-          "100%": { transform: "scale-110" },
+        skewup: {
+          "0%": { transform: "skewY(-12deg) rotate3d(360,1 , 0 , 45deg)" },
+          "100%": { transform: "skewY(0deg) rotate3d(0 ,0 , 0 , 0deg)" },
         },
       },
       animation: {
-        scaleup: "scaleup 1s ease-in-out infinite",
+        skewup: "skewup 1s ease-in-out 1",
       },
       borderRadius: {
         large: "30%",

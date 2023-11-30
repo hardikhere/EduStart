@@ -1,6 +1,8 @@
 import React from "react";
 
-const Input: React.FC<React.HTMLAttributes<HTMLInputElement>> = (props) => {
+const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
+  props
+) => {
   return (
     <input
       type="text"
