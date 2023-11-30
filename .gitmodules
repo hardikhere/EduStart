@@ -1,0 +1,3 @@
+[submodule "fredtec-backend"]
+	path = fredtec-backend
+	url = git@github.com:hardikhere/fredtec-backend.git
