@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useRef } from "react";
+import { UserProvider } from "@/context/UserContext";
 
 function MyApp({ Component, pageProps }) {
   const queryClientRef = useRef<null | QueryClient>(null);
@@ -11,9 +12,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClientRef.current}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
-      </Hydrate>
+      <UserProvider>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </UserProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
