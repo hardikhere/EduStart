@@ -65,3 +65,13 @@ export function isInSubmittedList(schoolId) {
     return false;
   }
 }
+
+export const setTokenInLS = (token: string) => {
+  localStorage.setItem("fmt", token);
+};
+export const removeTokenFromLS = () => {
+  localStorage.removeItem("fmt");
+};
+export const getTokenFromLS = () => {
+  return localStorage.getItem("fmt");
+};

@@ -8,8 +8,8 @@ const useSignup = () => {
     unknown,
     { email: string; password: string },
     ISignupResponse
-  >(["login"], (data) => {
-    return axios.post(APIS._signupUser, data);
+  >(["login"], async (data) => {
+    return await axios.post(APIS._signupUser, data);
   });
   return resp;
 };

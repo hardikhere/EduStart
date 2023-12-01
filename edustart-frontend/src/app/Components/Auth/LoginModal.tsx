@@ -7,6 +7,7 @@ import useLoginValidator from "@/hooks/useLoginValidator";
 import useLogin from "@/hooks/useLogin";
 import useSignup from "@/hooks/useSingnup";
 import { useUserDetails } from "@/context/UserContext";
+import { setTokenInLS } from "@/app/utils/common";
 
 const initialLoginDetails = {
   email: "",
@@ -24,7 +25,7 @@ const LoginModal = () => {
   const { passwordErr, emailErr } = useLoginValidator(loginDetails);
   const { mutateAsync: loginMutate } = useLogin();
   const { mutateAsync: registerMutate } = useSignup();
-  const { setUser } = useUserDetails();
+  const { setUser, user, logoutUser } = useUserDetails();
 
   const handleChange = (e) => {
     setLoginDetails({
@@ -38,14 +39,18 @@ const LoginModal = () => {
     if (passwordErr || emailErr) {
       setShowError(true);
     }
-    if (modalType === "Login") {
-      const resp = await loginMutate(loginDetails);
-      setUser(resp.data?.data);
-      setIsLoginModalOpen(false);
-    } else {
-      const resp = await registerMutate(loginDetails);
+    let resp: any = {};
+    try {
+      if (modalType === "Login") {
+        resp = await loginMutate(loginDetails);
+      } else {
+        resp = await registerMutate(loginDetails);
+      }
       setUser(resp?.data?.data);
+      setTokenInLS(resp.data?.data?.token);
       setIsLoginModalOpen(false);
+    } catch (exp) {
+      setShowError(true);
     }
   };
 
@@ -54,6 +59,10 @@ const LoginModal = () => {
       setLoginDetails(initialLoginDetails);
     }
   }, [isLoginModalOpen]);
+
+  if (user !== null) {
+    return <button onClick={logoutUser}>Logout</button>;
+  }
 
   return (
     <>

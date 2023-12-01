@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import { removeTokenFromLS } from "@/app/utils/common";
+import useUserByToken from "@/hooks/useUserFromToken";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Define the structure of the user data
 interface User {
@@ -29,7 +31,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  console.log("🚀 ~ file: UserContext.tsx:32 ~ user:", user);
+  const { data } = useUserByToken();
 
   // Function to set user details
   const setUserDetails = (userData: User) => {
@@ -38,7 +40,14 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const logoutUser = () => {
     setUser(null);
+    removeTokenFromLS();
   };
+
+  useEffect(() => {
+    if (data?.data) {
+      setUser(data.data);
+    }
+  }, [data]);
 
   const contextValue: UserContextProps = {
     user,
@@ -53,11 +62,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
 // Custom hook to access user details from the context
 export const useUserDetails = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, ...rest } = useContext(UserContext);
 
   if (user === undefined || setUser === undefined) {
     throw new Error("useUserDetails must be used within a UserProvider");
   }
 
-  return { user, setUser };
+  return { user, setUser, ...rest };
 };
