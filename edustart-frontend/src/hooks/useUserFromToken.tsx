@@ -11,7 +11,7 @@ const useUserByToken = () => {
         headers: { Authorization: `Bearer ${getTokenFromLS()}` },
       });
     },
-    { retry: false }
+    { retry: false, refetchOnWindowFocus: false }
   );
   return resp;
 };

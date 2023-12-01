@@ -1,13 +1,21 @@
 import SearchIcon from "@/app/components/Icons/SearchIcon";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SearchByText = () => {
-  const [Query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
   const performSearch = () => {
-    if (Query.length === 0) return;
+    if (query.length === 0) return;
     setQuery("");
-    // history.push(`/search?query=${Query}`);
+    router.push(`/search?query=${query}`);
   };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event?.target.value);
+  };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       performSearch();
@@ -22,6 +30,9 @@ const SearchByText = () => {
         className="bg-white border border-stone-300 
         focus:border-2 focus:border-sky-600
          h-10 px-5 pr-10 rounded-full text-lg focus:outline-none"
+        value={query}
+        onChange={handleChange}
+        onKeyDown={handleKeyPress}
       />
       <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
         <SearchIcon />

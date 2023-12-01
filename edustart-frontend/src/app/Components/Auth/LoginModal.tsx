@@ -38,6 +38,7 @@ const LoginModal = () => {
     setShowError(false);
     if (passwordErr || emailErr) {
       setShowError(true);
+      return;
     }
     let resp: any = {};
     try {
@@ -57,6 +58,7 @@ const LoginModal = () => {
   useEffect(() => {
     if (!isLoginModalOpen) {
       setLoginDetails(initialLoginDetails);
+      setShowError(false);
     }
   }, [isLoginModalOpen]);
 
@@ -119,12 +121,14 @@ const LoginModal = () => {
               )}
             </div>
 
-            <span
-              className={`p-0 m-0 transition-all duration-200 text-xs text-red-400 
-            ${showErrors ? "visible hidden" : "invisible block"}`}
-            >
-              {emailErr ? "Invalid email" : "Invalid Password"}
-            </span>
+            {showErrors && (
+              <span
+                className={`p-0 m-0 transition-all duration-200 text-xs text-red-400 
+            ${showErrors ? "visible" : "invisible"}`}
+              >
+                {emailErr ? "Invalid email" : "Invalid Password"}
+              </span>
+            )}
 
             <div className="mt-2 flex flex-col">
               <Button

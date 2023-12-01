@@ -3,6 +3,8 @@ import { Hydrate } from "react-query/hydration";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useRef } from "react";
 import { UserProvider } from "@/context/UserContext";
+import Navbar from "@/app/components/Home/Navbar";
+import "./index.css";
 
 function MyApp({ Component, pageProps }) {
   const queryClientRef = useRef<null | QueryClient>(null);
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClientRef.current}>
       <UserProvider>
         <Hydrate state={pageProps.dehydratedState}>
+          <Navbar />
           <Component {...pageProps} />
         </Hydrate>
       </UserProvider>
