@@ -32,7 +32,11 @@ const FeedsCard: React.FC<IFeed> = ({
             height={"200"}
             className="h-36 w-80 rounded-xl"
           />
-          <div className="mt-2 font-semibold hover:underline cursor-pointer">
+          <div
+            className="mt-2 font-semibold hover:underline 
+          leading-none mb-2
+          cursor-pointer"
+          >
             7 of 10 new schools in India private, says Unesco report
           </div>
           <p className="text-slate-500 text-xs font-light">

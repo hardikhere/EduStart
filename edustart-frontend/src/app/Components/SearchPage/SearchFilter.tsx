@@ -1,24 +1,15 @@
-import {
-  availableFilters,
-  initialFilterState,
-} from "@/app/components/SearchPage/utils";
-import useFilters from "@/hooks/useFilters";
+import { availableFilters } from "@/app/components/SearchPage/utils";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import queryString from "querystring";
+import React from "react";
 import { parseUrl } from "next/dist/shared/lib/router/utils/parse-url";
 
 const filtersArray = Object.entries(availableFilters);
 
-const SearchFilter = () => {
-  const { applyFilter } = useFilters(availableFilters);
+const SearchFilter: React.FC<{
+  query: Record<string, string>;
+  applyFilter: (props: any) => void;
+}> = ({ applyFilter }) => {
   const router = useRouter();
-  console.log(
-    "🚀 ~ file: SearchFilter.tsx:14 ~ SearchFilter ~ router:",
-    router.asPath
-  );
-  const [searchFilterState, setSearchFilterState] =
-    useState(initialFilterState);
 
   return (
     <div
@@ -41,10 +32,6 @@ const SearchFilter = () => {
             <div className="flex flex-wrap gap-2">
               {value.options.map(({ label, value, urlValue = null }) => {
                 const { search: urlString } = parseUrl(router.asPath) ?? "";
-                console.log(
-                  "🚀 ~ file: SearchFilter.tsx:44 ~ {value.options.map ~ urlString:",
-                  urlString
-                );
                 return (
                   <div
                     key={label}
@@ -60,7 +47,11 @@ const SearchFilter = () => {
                   }
                   `}
                     onClick={() => {
-                      applyFilter(key, urlValue ?? value);
+                      applyFilter({
+                        filterName: key,
+                        urlValue: urlValue ?? value,
+                        filterValue: value,
+                      });
                     }}
                   >
                     {label}

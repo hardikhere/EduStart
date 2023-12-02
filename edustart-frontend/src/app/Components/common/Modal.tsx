@@ -55,7 +55,7 @@ const Modal: React.FC<IModalProps> = ({
         className={`transition-all relative duration-300 ease-in scale-40 ${modalScale} 
         fixed items-center justify-center z-10 bg-white p-6 rounded-md shadow-md ${containerClassName}`}
       >
-        <div className="sticky flex justify-end absolute top-2 right-2">
+        <div className="absolute flex justify-end absolute top-2 right-2">
           <button onClick={onClose}>
             <CloseIcon />
           </button>

@@ -75,3 +75,11 @@ export const removeTokenFromLS = () => {
 export const getTokenFromLS = () => {
   return localStorage.getItem("fmt");
 };
+// Function to remove empty values
+export function removeEmptyValues(searchParams) {
+  for (const [key, value] of searchParams.entries()) {
+    if (value.trim().length === 0) {
+      searchParams.delete(key);
+    }
+  }
+}

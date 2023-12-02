@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid"; // Import your dropdown icon
 
 const Select: React.FC<{
-  options: Array<string>;
+  options: Array<{ label: string; value: string }>;
   onSelect: (option: string) => void;
   customButton: React.ReactNode;
 }> = ({ options, customButton = null, onSelect = () => {} }) => {
@@ -48,13 +48,13 @@ const Select: React.FC<{
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {options.map((option, index) => (
+            {options.map(({ label, value }, index) => (
               <div
                 key={index}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleOptionClick(option)}
+                onClick={() => handleOptionClick(value)}
               >
-                {option}
+                {label}
               </div>
             ))}
           </div>

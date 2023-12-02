@@ -7,13 +7,22 @@ import Image from "next/image";
 import Button from "@/app/components/common/Button";
 import SelectCity from "@/app/components/Home/SearchFormHome/SelectCity";
 import Select from "@/app/components/common/Select";
+import { useRouter } from "next/router";
+import { removeEmptyValues } from "@/app/utils/common";
 
 function SearchFormHome() {
+  const router = useRouter();
   const [cardDetails, setCardDetails] = useState({
     board: "CBSE",
-    city: "",
-    type: "",
+    address: "",
+    schoolType: "",
   });
+
+  const handleSearchClick = () => {
+    const urlsp = new URLSearchParams(cardDetails);
+    removeEmptyValues(urlsp);
+    router.push(`/search?${urlsp.toString()}`);
+  };
 
   return (
     <div className=" relative transition-all duration-300 animate-skewup p-6 w-full bg-white shadow-2xl rounded-2xl flex wrap flex-col w-80">
@@ -22,9 +31,9 @@ function SearchFormHome() {
       </h1>
       <div className="flex  h-10 w-full border border-slate-200 rounded-lg">
         <SelectCity
-          city={cardDetails.city}
-          onSelect={(city) => {
-            setCardDetails({ ...cardDetails, city });
+          city={cardDetails.address}
+          onSelect={(address) => {
+            setCardDetails({ ...cardDetails, address });
           }}
         />
 
@@ -32,7 +41,11 @@ function SearchFormHome() {
           onSelect={(option) =>
             setCardDetails({ ...cardDetails, board: option })
           }
-          options={["CBSE", "RBSE"]}
+          options={[
+            { label: "CBSE", value: "CBSE" },
+            { label: "RBSE", value: "RBSE" },
+            { label: "ICSE", value: "ICSE" },
+          ]}
           customButton={
             <Button
               className="bg-slate-200 text-slate-600  border-radius rounded-none
@@ -47,9 +60,13 @@ function SearchFormHome() {
 
         <Select
           onSelect={(option) =>
-            setCardDetails({ ...cardDetails, type: option })
+            setCardDetails({ ...cardDetails, schoolType: option })
           }
-          options={["Day", "Pre", "Boarding"]}
+          options={[
+            { label: "Day", value: "DAY" },
+            { label: "Pre", value: "PRE_SCHOOL" },
+            { label: "Boarding", value: "BOARDING" },
+          ]}
           customButton={
             <Button
               className="bg-slate-200 w-32 text-slate-600  border-radius rounded-none
@@ -57,12 +74,19 @@ function SearchFormHome() {
                 border border-r-0 border-l-1 border-t-0 border-b-0 border-slate-500 "
             >
               <Image src={schoolIcon} alt="Location icon" />
-              <div>{cardDetails.type.length ? cardDetails.type : "Type"}</div>
+              <div>
+                {cardDetails.schoolType.length
+                  ? cardDetails.schoolType
+                  : "Type"}
+              </div>
             </Button>
           }
         />
 
-        <Button className="   pl-6 pr-6 bg-black rounded-none rounded-br-md rounded-tr-md">
+        <Button
+          onClick={handleSearchClick}
+          className=" pl-6 pr-6 bg-black rounded-none rounded-br-md rounded-tr-md"
+        >
           <div>Search</div>
           <SearchIcon />
         </Button>

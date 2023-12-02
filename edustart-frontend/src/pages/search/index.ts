@@ -1,1 +1,1 @@
-export { default } from "./SearchListing";
+export { default, getServerSideProps } from "./SearchListing";
