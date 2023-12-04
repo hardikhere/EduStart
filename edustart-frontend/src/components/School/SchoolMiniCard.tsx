@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { MapIcon, PhoneIcon } from "@heroicons/react/solid";
+import { CheckIcon, MapIcon } from "@heroicons/react/solid";
 import { Rating } from "@smastrom/react-rating";
 import { getSchoolTypeString } from "@/utils/common";
 import Button from "@/components/common/Button";
 import Chip from "@/components/common/Chip";
+import RequestCallbackModal from "@/components/School/RequestCallbackModal";
+import { isSchoolSaved, saveSavedSchoolsInLS } from "@/components/School/utils";
 
 const SchoolMiniCard = ({
   schoolName,
@@ -16,8 +18,17 @@ const SchoolMiniCard = ({
   schoolType = "DAY",
   about = "",
   isAdmissionOpen = false,
+  schoolId,
 }) => {
   const image = imageUrls[0];
+  const [saved, setIsSaved] = useState(() => {
+    return isSchoolSaved(schoolId);
+  });
+
+  useEffect(() => {
+    setIsSaved(isSchoolSaved(schoolId));
+  }, [schoolId]);
+
   return (
     <div
       key={schoolName}
@@ -134,10 +145,26 @@ const SchoolMiniCard = ({
         </span>
       </div>
 
-      <Button className="bg-sky-600 h-6 pt-4 pb-4 mt-2">
-        <PhoneIcon className="h-4" />
-        Request a callback
-      </Button>
+      <div className="flex gap-1 mt-2 items-center">
+        <RequestCallbackModal id={schoolId} />
+        <Button
+          onClick={
+            saved
+              ? () => {}
+              : () => {
+                  saveSavedSchoolsInLS(schoolId);
+                  setIsSaved(true);
+                }
+          }
+          className="h-6 pt-4 pb-4 bg-slate-100
+        text-slate-500"
+        >
+          <>
+            {saved && <CheckIcon className="h-4" />}
+            {saved ? "Saved" : "Save"}
+          </>
+        </Button>
+      </div>
     </div>
   );
 };
@@ -203,6 +230,8 @@ export const SchoolMiniCardSkeleton = () => {
         </div>
       </div>
       <div className="mt-2 flex flex-col gap-1">
+        <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
+        <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
         <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
         <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
         <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
