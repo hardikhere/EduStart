@@ -112,7 +112,7 @@ const SchoolMiniCard = ({
         >
           <span className="text-xs text-slate-400">School Type:</span>
           <Chip className="bg-pink-100 text-red-500 ">
-            {getSchoolTypeString(schoolType)}
+            {getSchoolTypeString(schoolType as any)}
           </Chip>
         </div>
       </div>

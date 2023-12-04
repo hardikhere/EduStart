@@ -4,7 +4,7 @@ import { Modal } from "@/components/common";
 import SimpleImageSlider from "react-simple-image-slider";
 
 const FeedsCard: React.FC<IFeed> = ({
-  title,
+  title = "",
   imageUrls = [
     "https://static.toiimg.com/thumb/msid-95263609,width-1280,height-720,resizemode-4/95263609.jpg",
   ],

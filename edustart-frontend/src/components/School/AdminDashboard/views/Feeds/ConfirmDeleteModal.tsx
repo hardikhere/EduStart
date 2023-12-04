@@ -1,23 +1,30 @@
-import React from 'react'
-import { Modal,Button } from "react-bootstrap"
-const ConfirmDeleteModal = (props) => {
-    return (
-        <Modal style={{ marginTop: "4.3%" }} show={props.show} onHide={props.handleClose}>
-            <Modal.Header closeButton>
-                <Modal.Title>Are you Sure you want to delete this {props.name}?</Modal.Title>
-            </Modal.Header>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={props.handleClose}>
-                    Close
-                </Button>
-                <Button variant="danger"
-                onClick = {props.onDelete}
-                  >Delete
-                </Button>
-            </Modal.Footer>
+// import React from 'react'
+// import { Modal,Button } from "react-bootstrap"
+// const ConfirmDeleteModal = (props) => {
+//     return (
+//         <Modal style={{ marginTop: "4.3%" }} show={props.show} onHide={props.handleClose}>
+//             <Modal.Header closeButton>
+//                 <Modal.Title>Are you Sure you want to delete this {props.name}?</Modal.Title>
+//             </Modal.Header>
+//             <Modal.Footer>
+//                 <Button variant="secondary" onClick={props.handleClose}>
+//                     Close
+//                 </Button>
+//                 <Button variant="danger"
+//                 onClick = {props.onDelete}
+//                   >Delete
+//                 </Button>
+//             </Modal.Footer>
 
-        </Modal>
-    )
-}
+//         </Modal>
+//     )
+// }
 
-export default ConfirmDeleteModal
+// export default ConfirmDeleteModal
+import React from "react";
+
+const ConfirmDeleteModal = () => {
+  return <div>ConfirmDeleteModal</div>;
+};
+
+export default ConfirmDeleteModal;

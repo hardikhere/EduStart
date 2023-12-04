@@ -30,7 +30,7 @@ const SearchFilter: React.FC<{
           >
             <h6>{value.label}</h6>
             <div className="flex flex-wrap gap-2">
-              {value.options.map(({ label, value, urlValue = null }) => {
+              {value.options.map(({ label, value, urlValue = null }: any) => {
                 const { search: urlString } = parseUrl(router.asPath) ?? "";
                 return (
                   <div

@@ -7,9 +7,9 @@ import SearchFormHome from "@/components/Home/SearchFormHome";
 export default function Banner() {
   return (
     <div className="rounded-b-large  flex bg-gradient-to-br from-blue-100 from-10%  via-white to-200% to-blue-100 w-full justify-center relative">
-      <Image src={Student1} />
-      <Image src={Student2} />
-      <Image src={Student3} />
+      <Image src={Student1} alt="student " />
+      <Image src={Student2} alt="student " />
+      <Image src={Student3} alt="student " />
       <div className="absolute bottom-40">
         <SearchFormHome />
       </div>

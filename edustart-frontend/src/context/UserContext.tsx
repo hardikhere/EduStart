@@ -31,7 +31,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
-  const { data } = useUserByToken();
+  const { data }: { data: any } = useUserByToken();
 
   // Function to set user details
   const setUserDetails = (userData: User) => {
