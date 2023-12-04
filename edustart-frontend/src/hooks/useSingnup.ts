@@ -1,6 +1,6 @@
 import { APIS } from "@/utils/endpoints";
 import axios, { AxiosResponse } from "axios";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const useSignup = () => {
   const resp = useMutation<
@@ -8,8 +8,11 @@ const useSignup = () => {
     unknown,
     { email: string; password: string },
     ISignupResponse
-  >(["login"], async (data) => {
-    return await axios.post(APIS._signupUser, data);
+  >({
+    mutationKey: ["login"],
+    mutationFn: async (data) => {
+      return await axios.post(APIS._signupUser, data);
+    },
   });
   return resp;
 };
