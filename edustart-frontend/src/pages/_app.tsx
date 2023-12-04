@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { UserProvider } from "@/context/UserContext";
 import Navbar from "@/app/components/Home/Navbar";
 import "./index.css";
+import "@smastrom/react-rating/style.css";
 
 function MyApp({ Component, pageProps }) {
   const queryClientRef = useRef<null | QueryClient>(null);

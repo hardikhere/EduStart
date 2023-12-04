@@ -83,3 +83,18 @@ export function removeEmptyValues(searchParams) {
     }
   }
 }
+
+export const getSchoolTypeString = (
+  type: "DAY" | "BOARDING" | "PRE_SCHOOL"
+) => {
+  switch (type) {
+    case "DAY":
+      return "Day";
+    case "BOARDING":
+      return "Boarding";
+    case "PRE_SCHOOL":
+      return "Pre-School";
+    default:
+      return "Day";
+  }
+};
