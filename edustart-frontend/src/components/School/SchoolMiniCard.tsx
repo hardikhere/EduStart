@@ -143,3 +143,76 @@ const SchoolMiniCard = ({
 };
 
 export default SchoolMiniCard;
+
+export const SchoolMiniCardSkeleton = () => {
+  return (
+    <div
+      className=" animate-pulse  p-2 border border-1 bg-white overflow-hidden
+             h-96 w-72 rounded-md "
+    >
+      <div className=" relative">
+        <div
+          className="h-28  w-100 rounded-md bg-slate-200"
+          draggable={false}
+          style={{ objectFit: "cover" }}
+        ></div>
+
+        <div
+          className="absolute -bottom-8 left-2 rounded-full h-12 w-12
+                  bg-white shadow-md
+                  overflow-hidden bg-slate-100"
+        ></div>
+      </div>
+      <div className="ml-16 mt-2 ">
+        <div className="text-md h-2 w-40 rounded-full bg-slate-300  cursor-pointer mb-0 pb-0"></div>
+        <div className="max-h-8 overflow-hidden gap-2 text-xs mt-0 text-slate-500 font-light flex">
+          <div className="text-md h-1 w-20 mt-3 rounded-full bg-slate-300  cursor-pointer mb-0 pb-0"></div>
+          <div className="text-md h-1 w-28 mt-3 rounded-full bg-slate-300  cursor-pointer mb-0 pb-0"></div>
+        </div>
+      </div>
+      <div className="flex mt-2 rounded-lg bg-zinc-50 p-1 flex justify-center">
+        <div
+          className="pr-2 border border-l-0 border-t-0 border-b-0
+        border-r-1 border-dashed border-slate-300 flex flex-col items-center"
+        >
+          <span className="text-xs text-slate-400">Board:</span>
+          <div className="pl-2 text-sm pr-2 bg-sky-100 text-sky-600  rounded-full">
+            {/* {board} */}
+          </div>
+        </div>
+        <div
+          className="pl-2 pr-2 border border-l-0 border-t-0 border-b-0
+        border-r-1 border-dashed border-slate-300 flex flex-col items-center"
+        >
+          <span className="flex items-center text-xs text-slate-400">
+            Parents Rating:
+            <span className="pl-1 text-xs  text-yellow-500">
+              {/* {parentRating} */}
+            </span>
+          </span>
+        </div>
+
+        <div
+          className="pl-2 pr-2 border border-l-0 border-t-0 border-b-0
+        border-r-0 border-dashed border-slate-300 flex flex-col items-center"
+        >
+          <span className="text-xs text-slate-400">School Type:</span>
+          <Chip className="bg-pink-100 text-red-500 ">
+            {/* {getSchoolTypeString(schoolType as any)} */}
+          </Chip>
+        </div>
+      </div>
+      <div className="mt-2 flex flex-col gap-1">
+        <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
+        <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
+        <div className="text-md h-1 w-full mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
+        <div className="text-md h-1 w-20 mt-3 rounded-full bg-slate-200  cursor-pointer mb-0 pb-0"></div>
+      </div>
+
+      <Button
+        disabled
+        className="bg-slate-100 h-6 w-40 pt-4 pb-4 mt-2"
+      ></Button>
+    </div>
+  );
+};

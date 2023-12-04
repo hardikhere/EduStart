@@ -8,7 +8,7 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   return (
     <button
       {...rest}
-      className={`pl-2 pr-2 h-full rounded-md text-slate-100 
+      className={`pl-2 pr-2 rounded-md text-slate-100 
         flex justify-center items-center gap-1 ${className}`}
     >
       {children}

@@ -9,6 +9,7 @@ import SelectCity from "@/components/Home/SearchFormHome/SelectCity";
 import Select from "@/components/common/Select";
 import { useRouter } from "next/router";
 import { removeEmptyValues } from "@/utils/common";
+import Spinner from "@/components/common/Spinner";
 
 function SearchFormHome() {
   const router = useRouter();
@@ -49,7 +50,7 @@ function SearchFormHome() {
           customButton={
             <Button
               className="bg-slate-200 text-slate-600  border-radius rounded-none
-                pl-6 pr-6
+                pl-6 pr-6 h-full
                 border border-r-0 border-l-1 border-t-0 border-b-0 border-slate-500 "
             >
               <Image src={bookIcon} alt="Location icon" />
@@ -70,7 +71,7 @@ function SearchFormHome() {
           customButton={
             <Button
               className="bg-slate-200 w-32 text-slate-600  border-radius rounded-none
-                pl-6 pr-6
+                pl-6 pr-6 h-full
                 border border-r-0 border-l-1 border-t-0 border-b-0 border-slate-500 "
             >
               <Image src={schoolIcon} alt="Location icon" />
