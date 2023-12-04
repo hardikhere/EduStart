@@ -1,4 +1,4 @@
-import { ValidateEmail } from "@/app/utils/common";
+import { ValidateEmail } from "@/utils/common";
 import React, { useState, useEffect } from "react";
 
 const useLoginValidator = ({

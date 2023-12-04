@@ -1,9 +1,9 @@
-import { SearchFilter } from "@/app/components/SearchPage";
+import { SearchFilter } from "@/components/SearchPage";
 import useFilters from "@/hooks/useFilters";
 import useSchoolsListing from "@/hooks/useSchoolsListing";
 import React from "react";
 import Image from "next/image";
-import SchoolMiniCard from "@/app/components/School/SchoolMiniCard";
+import SchoolMiniCard from "@/components/School/SchoolMiniCard";
 
 const SearchListing = ({ query }) => {
   const { applyFilter, appliedFilters } = useFilters(query);

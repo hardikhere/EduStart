@@ -1,5 +1,5 @@
-import Banner from "@/app/components/Home/Banner";
-import LatestFeeds from "@/app/components/Home/LatestFeeds";
+import Banner from "@/components/Home/Banner";
+import LatestFeeds from "@/components/Home/LatestFeeds";
 import React from "react";
 
 const Home = () => {

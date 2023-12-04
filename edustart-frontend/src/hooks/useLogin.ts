@@ -1,4 +1,4 @@
-import { APIS } from "@/app/utils/endpoints";
+import { APIS } from "@/utils/endpoints";
 import axios, { AxiosResponse } from "axios";
 import { useMutation } from "react-query";
 

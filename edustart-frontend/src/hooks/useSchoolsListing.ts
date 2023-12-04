@@ -1,5 +1,5 @@
-import axiosInstance from "@/app/utils/axiosInstance";
-import { APIS } from "@/app/utils/endpoints";
+import axiosInstance from "@/utils/axiosInstance";
+import { APIS } from "@/utils/endpoints";
 import { useMemo } from "react";
 import { useQuery } from "react-query";
 

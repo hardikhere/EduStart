@@ -1,4 +1,4 @@
-import { removeTokenFromLS } from "@/app/utils/common";
+import { removeTokenFromLS } from "@/utils/common";
 import useUserByToken from "@/hooks/useUserFromToken";
 import React, { createContext, useContext, useEffect, useState } from "react";
 

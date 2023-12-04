@@ -1,5 +1,5 @@
-import { getTokenFromLS } from "@/app/utils/common";
-import { APIS } from "@/app/utils/endpoints";
+import { getTokenFromLS } from "@/utils/common";
+import { APIS } from "@/utils/endpoints";
 import axios, { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
 
