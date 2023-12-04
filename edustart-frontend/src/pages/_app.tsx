@@ -1,28 +1,26 @@
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Hydrate } from "react-query/hydration";
-import { ReactQueryDevtools } from "react-query/devtools";
-import { useRef } from "react";
 import { UserProvider } from "@/context/UserContext";
 import Navbar from "@/components/Home/Navbar";
+import {
+  QueryClient,
+  HydrationBoundary,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import "./index.css";
 import "@smastrom/react-rating/style.css";
 
 function MyApp({ Component, pageProps }) {
-  const queryClientRef = useRef<null | QueryClient>(null);
-  if (!queryClientRef.current) {
-    queryClientRef.current = new QueryClient();
-  }
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
-    <QueryClientProvider client={queryClientRef.current}>
+    <QueryClientProvider client={queryClient}>
       <UserProvider>
-        <Hydrate state={pageProps.dehydratedState}>
+        <HydrationBoundary state={pageProps.dehydratedState}>
           <Navbar />
           <Component {...pageProps} />
-        </Hydrate>
+        </HydrationBoundary>
       </UserProvider>
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }
