@@ -6,6 +6,7 @@ import {
   HydrationBoundary,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./index.css";
 import "@smastrom/react-rating/style.css";
 
@@ -20,7 +21,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </HydrationBoundary>
       </UserProvider>
-      {/* <ReactQueryDevtools /> */}
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

@@ -7,6 +7,8 @@ import Button from "@/components/common/Button";
 import Chip from "@/components/common/Chip";
 import RequestCallbackModal from "@/components/School/RequestCallbackModal";
 import { isSchoolSaved, saveSavedSchoolsInLS } from "@/components/School/utils";
+import Link from "next/link";
+import SaveSchoolButton from "@/components/School/SaveSchoolButton";
 
 const SchoolMiniCard = ({
   schoolName,
@@ -21,13 +23,6 @@ const SchoolMiniCard = ({
   schoolId,
 }) => {
   const image = imageUrls[0];
-  const [saved, setIsSaved] = useState(() => {
-    return isSchoolSaved(schoolId);
-  });
-
-  useEffect(() => {
-    setIsSaved(isSchoolSaved(schoolId));
-  }, [schoolId]);
 
   return (
     <div
@@ -78,9 +73,11 @@ const SchoolMiniCard = ({
         )}
       </div>
       <div className="ml-16 mt-2 ">
-        <h2 className="text-md hover:underline cursor-pointer mb-0 pb-0">
-          {schoolName}
-        </h2>
+        <Link href={`/school/${schoolId}`}>
+          <h2 className="text-md hover:underline cursor-pointer mb-0 pb-0">
+            {schoolName}
+          </h2>
+        </Link>
         {address && (
           <div className="max-h-8 overflow-hidden gap-2 text-xs mt-0 text-slate-500 font-light flex">
             <MapIcon className="h-4 text-slate-500" />
@@ -147,23 +144,7 @@ const SchoolMiniCard = ({
 
       <div className="flex gap-1 mt-2 items-center">
         <RequestCallbackModal id={schoolId} />
-        <Button
-          onClick={
-            saved
-              ? () => {}
-              : () => {
-                  saveSavedSchoolsInLS(schoolId);
-                  setIsSaved(true);
-                }
-          }
-          className="h-6 pt-4 pb-4 bg-slate-100
-        text-slate-500"
-        >
-          <>
-            {saved && <CheckIcon className="h-4" />}
-            {saved ? "Saved" : "Save"}
-          </>
-        </Button>
+        <SaveSchoolButton schoolId={schoolId} />
       </div>
     </div>
   );

@@ -2,7 +2,6 @@ import { SearchFilter } from "@/components/SearchPage";
 import useFilters from "@/hooks/useFilters";
 import useSchoolsListing from "@/hooks/useSchoolsListing";
 import React from "react";
-import Image from "next/image";
 import SchoolMiniCard, {
   SchoolMiniCardSkeleton,
 } from "@/components/School/SchoolMiniCard";
@@ -24,7 +23,8 @@ const SearchListing = ({ query }) => {
         {shouldShowLoading && (
           <>
             <SchoolMiniCardSkeleton />
-            <SchoolMiniCardSkeleton /> <SchoolMiniCardSkeleton />
+            <SchoolMiniCardSkeleton />
+            <SchoolMiniCardSkeleton />
           </>
         )}
         {!shouldShowLoading &&
