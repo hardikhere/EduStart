@@ -14,7 +14,10 @@ const initialLoginDetails = {
   password: "",
 };
 
-const LoginModal = () => {
+const LoginModal: React.FC<{
+  buttonLabel?: string;
+  buttonClassName?: string;
+}> = ({ buttonLabel = null, buttonClassName = "" }) => {
   const [modalType, setModalType] = useState<"Login" | "Register" | "forget">(
     "Login"
   );
@@ -62,13 +65,18 @@ const LoginModal = () => {
     }
   }, [isLoginModalOpen]);
 
-  if (user !== null) {
+  if (user !== null && !buttonLabel) {
     return <button onClick={logoutUser}>Logout</button>;
   }
 
   return (
     <>
-      <button onClick={() => setIsLoginModalOpen(true)}>Login</button>
+      <button
+        className={buttonClassName}
+        onClick={() => setIsLoginModalOpen(true)}
+      >
+        {buttonLabel ? buttonLabel : "Login"}
+      </button>
 
       <Modal
         containerClassName="w-80"

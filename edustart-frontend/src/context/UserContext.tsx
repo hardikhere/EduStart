@@ -45,7 +45,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     if (data?.data) {
-      setUser(data.data);
+      setUser(data.data?.data);
     }
   }, [data]);
 

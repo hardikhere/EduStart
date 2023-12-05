@@ -1,34 +1,20 @@
+import LoginModal from "@/components/Auth/LoginModal";
+import { getAverageReviews } from "@/components/School/Profile/utils";
+import { Modal } from "@/components/common";
 import Button from "@/components/common/Button";
 import Chip from "@/components/common/Chip";
-import { ChartSquareBarIcon, ChatIcon, UserIcon } from "@heroicons/react/solid";
+import Input from "@/components/common/Input";
+import { useUserDetails } from "@/context/UserContext";
+import useReviewsMutation from "@/hooks/useReviewsMutation";
+import { ChatIcon, CheckIcon, UserIcon } from "@heroicons/react/solid";
 import { Rating } from "@smastrom/react-rating";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const ProfileReviews = ({ reviews }) => {
-  const avgReviews = useMemo(() => {
-    const averageReview = reviews
-      .map(({ academics, infrastructure, facilities, safety, sports }) => ({
-        academics,
-        infrastructure,
-        facilities,
-        safety,
-        sports,
-      }))
-      .reduce((acc, value) => {
-        for (const key in value) {
-          if (acc[key] === undefined) {
-            acc[key] = 0;
-          }
-          acc[key] += value[key];
-        }
-        return acc;
-      }, {});
-    const totalReviews = reviews.length;
+  const { user } = useUserDetails();
 
-    for (const key in averageReview) {
-      averageReview[key] /= totalReviews;
-    }
-    return averageReview;
+  const avgReviews = useMemo(() => {
+    return getAverageReviews(reviews);
   }, [reviews]);
 
   return (
@@ -45,7 +31,7 @@ const ProfileReviews = ({ reviews }) => {
               className="bg-sky-50 
             text-sm py-1 px-4 w-36 text-slate-400"
             >
-              {key}: {reviews.length}
+              {key}: {avgReviews[key]}
               <Rating value={avgReviews[key]} style={{ width: 80 }} readOnly />
             </Chip>
           );
@@ -77,9 +63,145 @@ const ProfileReviews = ({ reviews }) => {
           </div>
         ))}
       </div>
-      <Button className="bg-sky-600">Write a review</Button>
+      {!user ? (
+        <LoginModal
+          buttonClassName="bg-blue-400 text-slate-100 rounded-lg"
+          buttonLabel="Login to write a review"
+        />
+      ) : (
+        <ReviewModal />
+      )}
     </div>
   );
 };
 
 export default ProfileReviews;
+
+const initialReviewState = {
+  infrastructure: 0,
+  academics: 0,
+  facilities: 0,
+  sports: 0,
+  faculty: 0,
+  safety: 0,
+  content: "",
+};
+const ReviewModal = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasGiven, setHasGiven] = useState(false);
+  const { mutate } = useReviewsMutation();
+
+  const [review, setReviews] = useState(initialReviewState);
+  console.log(
+    "🚀 ~ file: ProfileReviews.tsx:94 ~ ReviewModal ~ review:",
+    review
+  );
+
+  const handleOnClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleRatingChange = (name) => (value) => {
+    setReviews({ ...review, [name]: value });
+  };
+
+  const handleContentChange = (event) => {
+    setReviews({ ...review, content: event.target.value });
+  };
+
+  const handleSubmit = () => {
+    if (review.content.length === 0) {
+      return;
+    }
+    setHasGiven(true);
+    mutate({ review });
+  };
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      setReviews(initialReviewState);
+    }
+  }, [isModalOpen]);
+
+  if (hasGiven) {
+    return (
+      <Button onClick={() => setIsModalOpen(true)} className="bg-sky-600">
+        <CheckIcon className="h-4" /> Review Submitted
+      </Button>
+    );
+  }
+  return (
+    <>
+      <Button onClick={() => setIsModalOpen(true)} className="bg-sky-600">
+        Write a review
+      </Button>
+      <Modal isOpen={isModalOpen} onClose={handleOnClose}>
+        <div className="flex flex-col gap-2">
+          <div className="text-sm text-slate-400">
+            Infrastructure:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.infrastructure}
+              onChange={handleRatingChange("infrastructure")}
+            />
+          </div>
+          <div className="text-sm text-slate-400">
+            Academics:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.academics}
+              onChange={handleRatingChange("academics")}
+            />
+          </div>
+          <div className="text-sm text-slate-400">
+            Facilities:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.facilities}
+              onChange={handleRatingChange("facilities")}
+            />
+          </div>
+          <div className="text-sm text-slate-400">
+            Sports:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.sports}
+              onChange={handleRatingChange("sports")}
+            />
+          </div>
+          <div className="text-sm text-slate-400">
+            Faculty:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.faculty}
+              onChange={handleRatingChange("faculty")}
+            />
+          </div>
+          <div className="text-sm text-slate-400">
+            Safety:{" "}
+            <Rating
+              style={{ width: 150 }}
+              value={review.safety}
+              onChange={handleRatingChange("safety")}
+            />
+          </div>
+          <div className="flex flex-col ">
+            <label className="text-sm text-slate-400" htmlFor="content">
+              Write something about the school
+            </label>
+            <Input textArea id="content" onChange={handleContentChange} />
+          </div>
+          <Button
+            disabled={review.content.length < 1}
+            className={`${
+              review.content.length < 1 ? "bg-slate-400" : "bg-blue-500"
+            }`}
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </div>
+      </Modal>
+    </>
+  );
+};
