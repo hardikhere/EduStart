@@ -6,12 +6,15 @@ import RequestCallbackModal from "@/components/School/RequestCallbackModal";
 import SaveSchoolButton from "@/components/School/SaveSchoolButton";
 import ProfileAllDetailsSection from "@/components/School/Profile/ProfileAllDetailsSection";
 import ProfileReviews from "@/components/School/Profile/ProfileReviews";
+import { MailIcon } from "@heroicons/react/solid";
 
 const Profile: React.FC<ISchoolProfile> = ({
   imageUrls,
   schoolId,
   about,
   fees,
+  teachers,
+  email = null,
   reviews = [],
   ...rest
 }) => {
@@ -37,10 +40,23 @@ const Profile: React.FC<ISchoolProfile> = ({
             </div>
             <div className=" flex gap-2 h-20">
               <RequestCallbackModal id={schoolId} />
+              {email && (
+                <a
+                  href="mailto:hardik@gmail.com"
+                  className="bg-blue-500 text-sm hover:bg-blue-700
+              flex items-center justify-center gap-1 h-8 text-white font-bold py-1 px-4 rounded"
+                >
+                  <MailIcon className="h-4" /> Send Email
+                </a>
+              )}
               {shouldShowSaved && <SaveSchoolButton schoolId={schoolId} />}
             </div>
           </div>
-          <ProfileAllDetailsSection about={about} fees={fees} />
+          <ProfileAllDetailsSection
+            about={about}
+            fees={fees}
+            teachers={teachers}
+          />
         </div>
       </div>
     </div>

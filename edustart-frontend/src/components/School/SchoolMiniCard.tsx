@@ -78,12 +78,20 @@ const SchoolMiniCard = ({
             {schoolName}
           </h2>
         </Link>
-        {address && (
-          <div className="max-h-8 overflow-hidden gap-2 text-xs mt-0 text-slate-500 font-light flex">
-            <MapIcon className="h-4 text-slate-500" />
-            {address}
-          </div>
-        )}
+        <div className="h-8">
+          {address && (
+            <div className="max-h-8 overflow-hidden gap-2 text-xs mt-0 text-slate-500 font-light flex">
+              <MapIcon className="h-4 text-slate-500" />
+              {address}
+            </div>
+          )}
+          {!address && (
+            <div className="max-h-8 overflow-hidden gap-2 text-xs mt-0 text-slate-500 font-light flex">
+              <MapIcon className="h-4 text-slate-500" />
+              Address not available
+            </div>
+          )}
+        </div>
       </div>
       <div className="flex mt-2 rounded-lg bg-zinc-50 p-1 flex justify-center">
         <div
@@ -129,8 +137,8 @@ const SchoolMiniCard = ({
           font-light leading-0 flex h-20"
       >
         <span>
-          {about.substring(0, 230).concat(" ")}
-          {about.length > 230 && (
+          {about.substring(0, 220).concat(" ")}
+          {about.length > 220 && (
             <a
               href="javascript:void(0)"
               className="hover:underline text-sky-400

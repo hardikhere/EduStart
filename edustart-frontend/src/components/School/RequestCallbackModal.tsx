@@ -67,12 +67,15 @@ const RequestCallbackModal = ({ id }: { id: string }) => {
   return (
     <>
       {hasAlreadySubmitted ? (
-        <Button className="bg-green-600 h-6 pt-4 pb-4">
+        <Button className="bg-green-600 h-6 pt-4 pb-4 text-sm">
           <CheckIcon className="h-4" />
           Callback Requested
         </Button>
       ) : (
-        <Button onClick={openModal} className="bg-sky-600 h-6 pt-4 pb-4">
+        <Button
+          onClick={openModal}
+          className="bg-sky-600 h-6 pt-4 pb-4 text-sm"
+        >
           <PhoneIcon className="h-4" />
           Request a callback
         </Button>

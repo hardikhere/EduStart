@@ -9,14 +9,13 @@ import SelectCity from "@/components/Home/SearchFormHome/SelectCity";
 import Select from "@/components/common/Select";
 import { useRouter } from "next/router";
 import { removeEmptyValues } from "@/utils/common";
-import Spinner from "@/components/common/Spinner";
 
 function SearchFormHome() {
   const router = useRouter();
   const [cardDetails, setCardDetails] = useState({
     board: "CBSE",
     query: "",
-    schoolType: "",
+    schoolType: "DAY",
   });
 
   const handleSearchClick = () => {

@@ -23,12 +23,10 @@ const SaveSchoolButton = ({ schoolId }) => {
             }
       }
       className="h-6 pt-4 pb-4 bg-slate-100
-        text-slate-500"
+        text-slate-500 text-sm"
     >
-      <>
-        {saved && <CheckIcon className="h-4" />}
-        {saved ? "Saved" : "Save"}
-      </>
+      {saved && <CheckIcon className="h-4" />}
+      {saved ? "Saved" : "Save"}
     </Button>
   );
 };

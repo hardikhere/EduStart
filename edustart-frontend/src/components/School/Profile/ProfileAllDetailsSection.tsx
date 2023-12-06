@@ -1,8 +1,9 @@
+import TeachersCard from "@/components/School/Profile/TeachersCard";
 import Chip from "@/components/common/Chip";
 import DashedDivider from "@/components/common/DashedDivider";
 import React from "react";
 
-const ProfileAllDetailsSection = ({ about, fees }) => {
+const ProfileAllDetailsSection = ({ about, fees, teachers }) => {
   return (
     <div
       className="bg-white rounded-lg p-2 px-4 shadow"
@@ -29,6 +30,15 @@ const ProfileAllDetailsSection = ({ about, fees }) => {
       </div>
 
       <DashedDivider />
+
+      <div className="flex flex-col gap-2">
+        <h2 className="text-slate-400">Teachers: </h2>
+        <div className="flex flex-wrap gap-2">
+          {teachers?.map((teacher) => (
+            <TeachersCard key={teacher.name} {...teacher} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

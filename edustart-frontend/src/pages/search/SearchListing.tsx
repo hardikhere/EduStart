@@ -42,7 +42,7 @@ const SearchListing = () => {
           </div>
         )}
 
-        <div className="flex  flex-wrap  gap-3 ml-64 w-full">
+        <div className="flex  flex-wrap w-10/12 gap-3 ml-64 w-full">
           {shouldShowLoading && (
             <>
               <SchoolMiniCardSkeleton />
