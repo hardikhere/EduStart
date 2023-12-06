@@ -6,7 +6,6 @@ import { parseUrl } from "next/dist/shared/lib/router/utils/parse-url";
 const filtersArray = Object.entries(availableFilters);
 
 const SearchFilter: React.FC<{
-  query: Record<string, string>;
   applyFilter: (props: any) => void;
 }> = ({ applyFilter }) => {
   const router = useRouter();

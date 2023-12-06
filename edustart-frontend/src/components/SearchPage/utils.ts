@@ -22,32 +22,13 @@ export const availableFilters = {
       { label: "ICSE", value: "ICSE" },
     ],
   },
-  fees: {
-    label: "Annual Fees",
+  query: {
+    label: "City",
     options: [
-      {
-        label: "< 3 lacs",
-        urlValue: "0-3lacs",
-        value: {
-          $gt: 0,
-          $lt: 300000,
-        },
-      },
-      {
-        label: "3 lacs to 5 lacs",
-        urlValue: "3-5lacs",
-        value: {
-          $gt: 300000,
-          $lt: 500000,
-        },
-      },
-      {
-        label: "5 lacs +",
-        urlValue: "5lacs+",
-        value: {
-          $gt: 500000,
-        },
-      },
+      { label: "Jaipur", value: "jaipur" },
+      { label: "Bangalore", value: "bangalore" },
+      { label: "Gurgaon", value: "gurgaon" },
+      { label: "Mumbai", value: "mumbai" },
     ],
   },
   schoolType: {

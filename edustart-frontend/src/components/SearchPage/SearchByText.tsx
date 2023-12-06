@@ -1,6 +1,6 @@
 import SearchIcon from "@/components/Icons/SearchIcon";
 import React, { ChangeEvent, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 const SearchByText = () => {
   const [query, setQuery] = useState("");
@@ -8,11 +8,21 @@ const SearchByText = () => {
 
   const performSearch = () => {
     if (query.length === 0) return;
-    setQuery("");
-    router.push(`/search?query=${query}`);
+    router.push({
+      pathname: "/search",
+      query: { ...router.query, query },
+    });
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event?.target.value.length === 0) {
+      const newQuery = { ...router.query };
+      delete newQuery.query;
+      router.push({
+        pathname: "/search",
+        query: newQuery,
+      });
+    }
     setQuery(event?.target.value);
   };
 

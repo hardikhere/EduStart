@@ -5,10 +5,12 @@ import React from "react";
 import SchoolMiniCard, {
   SchoolMiniCardSkeleton,
 } from "@/components/School/SchoolMiniCard";
+import Image from "next/image";
+import noResults from "@/assets/noresults.svg";
 
-const SearchListing = ({ query }) => {
-  const { applyFilter, appliedFilters } = useFilters(query);
-  const { data, isLoading, isFetching } = useSchoolsListing(appliedFilters);
+const SearchListing = () => {
+  const { applyFilter, appliedFilters } = useFilters();
+  const { data, isLoading, isFetching } = useSchoolsListing();
   const shouldShowLoading = isLoading || isFetching;
   const {
     data: { data: schools = [] },
@@ -17,21 +19,44 @@ const SearchListing = ({ query }) => {
   return (
     <div className="relative p-4 flex flex-wrap gap-10">
       <div className="fixed top-24 z-20">
-        <SearchFilter query={query} applyFilter={applyFilter} />
+        <SearchFilter applyFilter={applyFilter} />
       </div>
-      <div className="flex flex-wrap  gap-3 ml-64 w-full">
-        {shouldShowLoading && (
-          <>
-            <SchoolMiniCardSkeleton />
-            <SchoolMiniCardSkeleton />
-            <SchoolMiniCardSkeleton />
-          </>
+
+      <div>
+        {!isLoading && appliedFilters.query && (
+          <h2 className="font-light ml-64">
+            Search Results for:
+            <span className="text-sky-700">
+              &quot;{appliedFilters.query}&quot;
+            </span>
+          </h2>
         )}
-        {!shouldShowLoading &&
-          data &&
-          schools?.map((props: any) => {
-            return <SchoolMiniCard key={props.schoolName} {...props} />;
-          })}
+
+        {!isLoading && schools.length === 0 && (
+          <div className=" ml-64 h-72  flex-col flex w-full items-center justify-center">
+            <Image src={noResults} alt="noresults" className="h-40" />
+            <h3>No Results Found </h3>
+            <h4 className="font-light text-slate-600">
+              Try changing filters or search query
+            </h4>
+          </div>
+        )}
+
+        <div className="flex  flex-wrap  gap-3 ml-64 w-full">
+          {shouldShowLoading && (
+            <>
+              <SchoolMiniCardSkeleton />
+              <SchoolMiniCardSkeleton />
+              <SchoolMiniCardSkeleton />
+            </>
+          )}
+
+          {!shouldShowLoading &&
+            data &&
+            schools?.map((props: any) => {
+              return <SchoolMiniCard key={props.schoolName} {...props} />;
+            })}
+        </div>
       </div>
     </div>
   );

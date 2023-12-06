@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import NextNProgress from "nextjs-progressbar";
 import "./index.css";
 import "@smastrom/react-rating/style.css";
 
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <UserProvider>
         <HydrationBoundary state={pageProps.dehydratedState}>
           <Navbar />
+          <NextNProgress />
           <Component {...pageProps} />
         </HydrationBoundary>
       </UserProvider>

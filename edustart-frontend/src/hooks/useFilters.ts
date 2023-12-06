@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import querystring from "querystring";
 import { useEffect, useState } from "react";
 
-const useFilters = (initialValues: Record<string, string>) => {
+const useFilters = () => {
   const router = useRouter();
-  const [appliedFilters, setAppliedFilters] = useState({ ...initialValues });
+  const [appliedFilters, setAppliedFilters] = useState({ ...router.query });
 
   const appendObjectToURL = (object: Record<string, string>) => {
     const currentPath = router.asPath.split("?")[0]; // Get the current path without query params
@@ -36,7 +36,9 @@ const useFilters = (initialValues: Record<string, string>) => {
         // append the filter in or condition
         setAppliedFilters({
           ...appliedFilters,
-          [filterName]: appliedFilters[filterName].concat(`,${urlValue}`),
+          [filterName]: (appliedFilters[filterName] as any).concat(
+            `,${urlValue}`
+          ),
         });
       }
     } else {
@@ -47,7 +49,7 @@ const useFilters = (initialValues: Record<string, string>) => {
 
   useEffect(() => {
     if (Object.values(appliedFilters).length > 0)
-      appendObjectToURL(appliedFilters);
+      appendObjectToURL(appliedFilters as any);
   }, [appliedFilters]);
 
   return { applyFilter, appliedFilters };

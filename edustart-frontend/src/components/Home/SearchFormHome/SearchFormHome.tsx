@@ -15,7 +15,7 @@ function SearchFormHome() {
   const router = useRouter();
   const [cardDetails, setCardDetails] = useState({
     board: "CBSE",
-    address: "",
+    query: "",
     schoolType: "",
   });
 
@@ -32,9 +32,9 @@ function SearchFormHome() {
       </h1>
       <div className="flex  h-10 w-full border border-slate-200 rounded-lg">
         <SelectCity
-          city={cardDetails.address}
+          city={cardDetails.query}
           onSelect={(address) => {
-            setCardDetails({ ...cardDetails, address });
+            setCardDetails({ ...cardDetails, query: address.toLowerCase() });
           }}
         />
 

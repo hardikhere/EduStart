@@ -2,12 +2,14 @@ import axiosInstance from "@/utils/axiosInstance";
 import { APIS } from "@/utils/endpoints";
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 
-const useSchoolsListing = (filters = {}) => {
+const useSchoolsListing = () => {
+  const router = useRouter();
   const searchString = useMemo(() => {
-    const urlsp = new URLSearchParams(filters);
+    const urlsp = new URLSearchParams(router.query);
     return urlsp.toString();
-  }, [filters]);
+  }, [router.query]);
 
   const resp = useQuery({
     queryKey: ["listing", searchString],
