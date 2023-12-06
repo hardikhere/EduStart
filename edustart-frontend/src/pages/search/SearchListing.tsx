@@ -33,7 +33,7 @@ const SearchListing = () => {
         )}
 
         {!isLoading && schools.length === 0 && (
-          <div className=" ml-64 h-72  flex-col flex w-full items-center justify-center">
+          <div className=" ml-64 h-72  flex-col flex w-10/12  items-center justify-center">
             <Image src={noResults} alt="noresults" className="h-40" />
             <h3>No Results Found </h3>
             <h4 className="font-light text-slate-600">
