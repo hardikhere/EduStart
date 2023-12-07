@@ -1,6 +1,6 @@
-const BASE = "https://edustart-backend.onrender.com/api/v1";
+// const BASE = "https://edustart-backend.onrender.com/api/v1";
 // const BASE = "http://localhost:8080/api/v1";
-// const BASE = "https://staging-dot-edustart-407116.el.r.appspot.com/api/v1";
+const BASE = "https://edustart22.uw.r.appspot.com/api/v1";
 export const APIS = {
   _createSchool: BASE + "/create-school",
   _uploadImage: BASE + "/upload-image",
